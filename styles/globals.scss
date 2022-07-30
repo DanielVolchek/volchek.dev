@@ -1,0 +1,23 @@
+html,
+body {
+  padding: 0;
+
+  margin-left: 5em;
+  margin-right: 5em;
+
+  // TODO put in media queries for default page margins
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: white;
+    background: #696969;
+  }
+}
