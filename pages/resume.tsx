@@ -1,9 +1,9 @@
-import { NextPage } from "next";
+import type { NextPage } from "next";
 
 const resume: NextPage = () => {
 	return (
 		<div>
-			<h1>Hello</h1>
+			<h1>Hello World</h1>
 		</div>
 	);
 };

@@ -1,7 +1,6 @@
 import type { NextPage } from "next";
 
-const projects: NextPage = () => {
-
+const blog: NextPage = () => {
 	return (
 		<div>
 			<h1>Hello World</h1>
@@ -9,4 +8,4 @@ const projects: NextPage = () => {
 	);
 };
 
-export default projects;
+export default blog;

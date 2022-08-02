@@ -1,0 +1,18 @@
+.landing {
+	display: flex;
+	align-items: center;
+	height: auto;
+	.face_wrapper {
+		flex-basis: 25%;
+		flex: 1;
+		img {
+			border-radius: 50%;
+		}
+	}
+	.header {
+		flex: 2;
+		font-size: 4em;
+		margin-left: 1em;
+		opacity: 0;
+	}
+}
