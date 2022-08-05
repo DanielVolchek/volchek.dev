@@ -2,7 +2,8 @@ import type { NextPage } from "next";
 import Image from "next/image";
 import face_img from "../public/myface.jpg";
 import { useEffect, useRef } from "react";
-import styles from "../styles/pages/Home.module.scss";
+
+import { Page_HomeStyles as styles } from "../styles/StylesModuleAPI";
 const Home: NextPage = () => {
 	// on inital page load set opacity to 1
 	// set transition here as well to keep elements of animation together
@@ -23,9 +24,6 @@ const Home: NextPage = () => {
 	return (
 		<>
 			<div className={styles.landing}>
-				<div className={styles.face_wrapper}>
-					<Image src={face_img} alt={"my face"} />
-				</div>
 				<h1 className={styles.header} ref={h1ref}>
 					Welcome
 				</h1>

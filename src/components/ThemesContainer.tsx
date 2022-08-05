@@ -1,4 +1,4 @@
-import styles from "../../styles/components/Nav.module.scss";
+import { Layout_NavStyles as styles } from "../../styles/StylesModuleAPI";
 import themeList from "./ThemeList";
 
 interface PrivProps {}

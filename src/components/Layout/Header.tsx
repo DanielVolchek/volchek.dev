@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-import styles from "../../../styles/components/Nav.module.scss";
+import { Layout_NavStyles as styles } from "../../../styles/StylesModuleAPI";
 import ThemesContainer from "../ThemesContainer";
 import Navbar from "./Navbar";
 

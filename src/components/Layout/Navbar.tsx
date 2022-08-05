@@ -1,7 +1,8 @@
-import styles from "../../../styles/components/Nav.module.scss";
+import { Layout_NavStyles as styles } from "../../../styles/StylesModuleAPI";
 import Link from "next/link";
 import NavLink from "../NavLink";
 import { useRef, useState } from "react";
+import HamburgerMenu from "../ HamburgerMenu";
 
 interface PrivProps {
 	active: string;
@@ -41,6 +42,7 @@ const Navbar = ({ active, pressedThemeButton }: PrivProps) => {
 			<button onClick={onThemeClick} className={styles.themeBtn}>
 				{ARROW_SYMBOL} Theme
 			</button>
+			<HamburgerMenu toggleNavMenu={() => {}} />
 		</nav>
 	);
 };

@@ -1,3 +1,5 @@
+@import "../util/vars";
+
 @mixin NavHover {
 	&:hover {
 		background-color: var(--secondaryBGColor);
@@ -33,43 +35,79 @@
 	img {
 		filter: brightness(0) invert(1);
 	}
-	.linksContainer {
-		display: flex;
-		width: 70%;
-		justify-content: space-evenly;
-		align-items: center;
-		a {
-			@include NavHover();
-			text-transform: capitalize;
-			color: var(--primaryTextColor);
-			text-decoration: none;
-			&:hover,
-			&:active {
-				text-decoration: underline;
-			}
-			&.active {
-				// on page currently
-				&:hover {
-					text-decoration: none;
-				}
-				border-bottom: 1px solid green;
-			}
+
+	.ham {
+		cursor: pointer;
+		display: none;
+		@media screen and (max-width: $md-break) {
+			display: inline-block;
+		}
+		width: auto;
+		height: 25px;
+		fill: var(--primaryTextColor);
+		.animate_forwards {
+			animation: 1.25s animate_ham linear forwards;
+		}
+		.animate_backwards {
 		}
 	}
-	.themeBtn {
-		color: var(--primaryTextColor);
-		background-color: var(--primaryBGColor);
-
-		margin-left: 3em;
-		width: max-content;
-		padding: 10px;
-
-		border: none;
-		border-radius: 1em;
-		cursor: pointer;
-
-		@include NavHover();
+	@media screen and (max-width: $md-break) {
+		justify-content: flex-end;
 	}
+}
+.linksContainer {
+	display: flex;
+	width: 70%;
+	justify-content: space-evenly;
+	align-items: center;
+	a {
+		@include NavHover();
+		text-transform: capitalize;
+		color: var(--primaryTextColor);
+		text-decoration: none;
+		&:hover,
+		&:active {
+			text-decoration: underline;
+		}
+		&.active {
+			// on page currently
+			&:hover {
+				text-decoration: none;
+			}
+			border-bottom: 1px solid green;
+		}
+	}
+}
+.themeBtn {
+	color: var(--primaryTextColor);
+	background-color: var(--primaryBGColor);
+
+	margin-left: 3em;
+	width: max-content;
+	padding: 10px;
+
+	border: none;
+	border-radius: 1em;
+	cursor: pointer;
+
+	@include NavHover();
+}
+
+@media screen and (max-width: 800px) {
+	// .nav
+	.nav {
+		justify-content: flex-end;
+	}
+	.linksContainer {
+		display: none;
+	}
+	.ham {
+		display: block;
+	}
+}
+
+// hamburger menu animation frames
+@keyframes animate_ham {
 }
 
 .themeOuterContainer {
@@ -102,7 +140,7 @@
 				margin-top: 0;
 			}
 			&:first-of-type {
-				margin-left: 0;
+				margin-left: 100px;
 			}
 			.colorDotContainer {
 				display: flex;
