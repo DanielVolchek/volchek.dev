@@ -11,7 +11,7 @@ const nextConfig = {
       },
       {
         source: '/linkedin',
-        destination: 'https://www.linkedin.com/in/daniel-volchek-aa0172224/',
+        destination: 'https://www.linkedin.com/in/danielvolchek',
         permanent: true
       },
     ]
