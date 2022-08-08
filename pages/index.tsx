@@ -1,7 +1,5 @@
 import type { NextPage } from "next";
-import Image from "next/image";
-import face_img from "../public/myface.jpg";
-import { useEffect, useRef } from "react";
+import { SyntheticEvent, useEffect, useRef } from "react";
 
 import styles from "../styles/pages/Home.module.scss";
 const Home: NextPage = () => {
@@ -28,9 +26,60 @@ const Home: NextPage = () => {
 					This page is a work in progress.
 					<p>Please check back in later to see it completed </p>
 				</h1>
+				<EmailForm />
 			</div>
 		</>
 	);
 };
 
+const EmailForm = () => {
+	const saveEmail = async (formSubmission: any) => {
+		const response = await fetch("/api/email", {
+			method: "POST",
+			body: JSON.stringify(formSubmission),
+		});
+		if (!response.ok) {
+			throw new Error(response.statusText);
+		}
+		return await response.json();
+	};
+	const onSubmit = async (event: SyntheticEvent) => {
+		console.log("submitted");
+		try {
+			await saveEmail({
+				// @ts-ignore
+				firstName: event.target.first.value,
+				// @ts-ignore
+				lastName: event.target.last.value,
+				// @ts-ignore
+				email: event.target.email.value,
+			});
+			alert("Success!");
+			// @ts-ignore
+			event.target.first.value = "";
+			// @ts-ignore
+			event.target.last.value = "";
+			// @ts-ignore
+			event.target.email.value = "";
+		} catch (err: any) {
+			alert("Failed to submit email, please try again");
+			console.error(err);
+		}
+	};
+
+	return (
+		<div className={styles.form}>
+			<h2>Enter your contact info to be notified on release</h2>
+			<form method="post" onSubmit={onSubmit}>
+				<label htmlFor="first">First name:</label>
+				<input type="text" id="first" name="first" required />
+				<label htmlFor="last">Last name:</label>
+				<input type="text" id="last" name="last" required />
+				<label htmlFor="email">Email</label>
+				<input type="email" id="email" name="email" required />
+				<button type="submit">Submit</button>
+			</form>
+		</div>
+	);
+};
 export default Home;
