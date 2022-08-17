@@ -44,25 +44,25 @@ const EmailForm = () => {
 		return await response.json();
 	};
 	const onSubmit = async (event: SyntheticEvent) => {
+		event.preventDefault();
 		console.log("submitted");
 		try {
 			await saveEmail({
 				// @ts-ignore
-				firstName: event.target.first.value,
+				firstName: event.target.firstName.value,
 				// @ts-ignore
-				lastName: event.target.last.value,
+				lastName: event.target.lastName.value,
 				// @ts-ignore
 				email: event.target.email.value,
 			});
 			alert("Success!");
 			// @ts-ignore
-			event.target.first.value = "";
+			event.target.firstName.value = "";
 			// @ts-ignore
-			event.target.last.value = "";
+			event.target.lastName.value = "";
 			// @ts-ignore
 			event.target.email.value = "";
 		} catch (err: any) {
-			alert("Failed to submit email, please try again");
 			console.error(err);
 		}
 	};
@@ -71,10 +71,10 @@ const EmailForm = () => {
 		<div className={styles.form}>
 			<h2>Enter your contact info to be notified on release</h2>
 			<form method="post" onSubmit={onSubmit}>
-				<label htmlFor="first">First name:</label>
-				<input type="text" id="first" name="first" required />
-				<label htmlFor="last">Last name:</label>
-				<input type="text" id="last" name="last" required />
+				<label htmlFor="firstName">First name:</label>
+				<input type="text" id="firstName" name="firstName" required />
+				<label htmlFor="lastName">Last name:</label>
+				<input type="text" id="lastName" name="lastName" required />
 				<label htmlFor="email">Email</label>
 				<input type="email" id="email" name="email" required />
 				<button type="submit">Submit</button>
