@@ -28,7 +28,6 @@ if (_clientEnv.success === false) {
 for (let key of Object.keys(_clientEnv.data)) {
   if (!key.startsWith("NEXT_PUBLIC_")) {
     console.warn("❌ Invalid public environment variable name:", key);
-
     throw new Error("Invalid public environment variable name");
   }
 }
