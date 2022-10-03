@@ -1,0 +1,41 @@
+.pagetoggle {
+	position: relative;
+	display: inline-block;
+
+	.animateHeader {
+		animation: animateHeader 250ms ease-in-out forwards;
+	}
+
+	&::before {
+		background: rgb(244, 85, 8);
+		background: linear-gradient(
+			90deg,
+			rgba(244, 85, 8, 1) 13%,
+			rgba(255, 216, 0, 1) 100%
+		);
+
+		content: "";
+		position: absolute;
+		height: 100%;
+		left: 0;
+		width: 0px;
+
+		&:hover {
+			width: 20px;
+		}
+	}
+
+	h1:has(&) {
+	}
+}
+
+@keyframes animateHeader {
+	0% {
+		transform-origin: left;
+	}
+	50% {
+	}
+	100% {
+		transform-origin: right;
+	}
+}
