@@ -1,15 +1,25 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import styles from "./PageToggle.module.scss";
 import { useAppStateConsumer, useAppStateUpdater } from "@/lib/ContextWrapper";
 
 export default function PageToggle() {
-	const h1Ref = useRef<HTMLHeadingElement>(null);
+	const coverRef = useRef<HTMLHeadingElement>(null);
 	const appState = useAppStateConsumer();
 	const setAppState = useAppStateUpdater();
 
+	useEffect(() => {
+		animateUpdate();
+	}, [appState]);
+
 	const animateUpdate = () => {
-		if (!h1Ref.current) return;
-		h1Ref.current.classList.add(styles.animateHeader as string);
+		if (!coverRef.current) return;
+		coverRef.current.classList.add(styles.animateHeaderClass as string);
+		setTimeout(() => {
+			if (coverRef.current)
+				coverRef.current.classList.remove(
+					styles.animateHeaderClass as string
+				);
+		}, 500);
 	};
 
 	const updatePage = () => {
@@ -21,7 +31,8 @@ export default function PageToggle() {
 	};
 
 	return (
-		<span ref={h1Ref} onClick={updatePage} className={styles.pagetoggle}>
+		<span onClick={updatePage} className={styles.pagetoggle}>
+			<div ref={coverRef} className={styles.cover}></div>
 			{appState}
 		</span>
 	);

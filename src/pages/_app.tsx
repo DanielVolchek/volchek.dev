@@ -5,7 +5,7 @@ import { ContextWrapper } from "@/lib/ContextWrapper";
 const MyApp: AppType = ({ Component, pageProps }) => {
 	return (
 		<ContextWrapper>
-			<Component {...pageProps} />;
+			<Component {...pageProps} />
 		</ContextWrapper>
 	);
 };

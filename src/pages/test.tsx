@@ -1,18 +1,16 @@
 import PageToggle from "@/components/PageToggle/PageToggle";
+import Developer from "@/layouts/Developer";
+import Dreamer from "@/layouts/Dreamer";
+import { useAppStateConsumer } from "@/lib/ContextWrapper";
 import type { NextPage } from "next";
+import { useRef } from "react";
 
 const test: NextPage = () => {
-	return (
-		<div>
-			<h1>Test Component</h1>
+	const toggler = useRef(<PageToggle />);
 
-			<h1>
-				<PageToggle />
-			</h1>
+	const appState = useAppStateConsumer();
 
-			<PageToggle />
-		</div>
-	);
+	return <>{appState === "Developer" ? <Developer /> : <Dreamer />}</>;
 };
 
 export default test;

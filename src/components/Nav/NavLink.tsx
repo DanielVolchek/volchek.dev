@@ -18,9 +18,10 @@ export default function NavLink({ href, name }: Props) {
 		<Link href={href}>
 			<a
 				href={href}
-				className={`${styles.navlink} ${
-					ifOnSamePage() ? styles.active : ""
-				}`}>
+				// className={`${styles.navlink} ${
+				// 	ifOnSamePage() ? styles.active : ""
+				// }`}
+				className={styles.navlink}>
 				{name}
 			</a>
 		</Link>

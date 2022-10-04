@@ -29,10 +29,15 @@ export default function NavHover({ href, name, children }: Props) {
 
 	return (
 		<>
-			<span onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+			<div onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
 				<NavLink href={href} name={name} />
-			</span>
-			{showingLinks && <section>{children}</section>}
+				{showingLinks && (
+					<section
+						style={{ display: "flex", flexDirection: "column" }}>
+						{children}
+					</section>
+				)}
+			</div>
 		</>
 	);
 }

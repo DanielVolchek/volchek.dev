@@ -20,17 +20,16 @@ const AppContext = React.createContext<{
 });
 
 export function ContextWrapper({ children }: Props) {
-	let state: AppState = "Developer";
+	const [appState, setAppState] = useState<AppState>("Developer");
 
 	return (
 		<AppContext.Provider
 			value={{
-				appState: state,
-				setAppState: (value) => {
-					console.log(`setting state from ${state} to ${value}`);
-					state = value;
-					console.log(`state is now ${state}`);
-				},
+				appState,
+				setAppState,
+				// setAppState: (value) => {
+				// 	setState(value);
+				// },
 			}}>
 			{children}
 		</AppContext.Provider>

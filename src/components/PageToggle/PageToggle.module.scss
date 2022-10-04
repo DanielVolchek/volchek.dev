@@ -1,12 +1,11 @@
 .pagetoggle {
 	position: relative;
 	display: inline-block;
+	z-index: 1;
 
-	.animateHeader {
-		animation: animateHeader 250ms ease-in-out forwards;
-	}
+	.cover {
+		z-index: -1;
 
-	&::before {
 		background: rgb(244, 85, 8);
 		background: linear-gradient(
 			90deg,
@@ -17,25 +16,43 @@
 		content: "";
 		position: absolute;
 		height: 100%;
+		width: 100%;
 		left: 0;
-		width: 0px;
 
-		&:hover {
-			width: 20px;
+		transform: scaleX(0);
+		transition: transform 250ms linear;
+	}
+
+	&:hover {
+		.cover {
+			// transform: scaleX(1);
+			// transform-origin: left;
 		}
 	}
 
 	h1:has(&) {
+		display: block;
 	}
+}
+
+.animateHeaderClass {
+	animation: animateHeader 500ms linear forwards;
 }
 
 @keyframes animateHeader {
 	0% {
 		transform-origin: left;
+		transform: scaleX(0);
 	}
 	50% {
+		transform-origin: left;
+		transform: scaleX(1);
+	}
+	51% {
+		transform-origin: right;
 	}
 	100% {
 		transform-origin: right;
+		transform: scaleX(0);
 	}
 }
