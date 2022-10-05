@@ -7,15 +7,14 @@ import Dreamer from "@/layouts/Dreamer";
 const Home: NextPage = () => {
 	const appState = useAppStateConsumer();
 
-	return <>{appState === "Developer" ? <Developer /> : <Dreamer />}</>;
-	// return (
-	// 	<>
-	// 		<Head>
-	// 			<title>Volchek.Dev</title>
-	// 		</Head>
-	// 		<main className={styles.home}></main>
-	// 	</>
-	// );
+	return (
+		<>
+			<Head>
+				<title>Volchek.Dev</title>
+			</Head>
+			{appState === "Developer" ? <Developer /> : <Dreamer />}
+		</>
+	);
 };
 
 export default Home;

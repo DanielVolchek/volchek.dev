@@ -1,7 +1,38 @@
-.developer {
-	display: block;
-}
+@use "src/modules/mixins" as *;
 
-.dreamer {
-	display: block;
+@include global() {
+	padding-bottom: 1.5em;
+	border-bottom: 2px solid white;
+	margin-bottom: 4em;
+
+	//  before name
+	& > p:nth-of-type(1) {
+		font-size: 0.75em;
+	}
+
+	//  name
+	h2 {
+		padding-bottom: 0.25em;
+	}
+
+	//  A... before toggle
+	& > p:nth-of-type(2) {
+		font-size: 1em;
+	}
+
+	// pagetoggle
+	h1 > span {
+		font-size: 2em;
+		animation: boun;
+	}
+
+	//  about hero section
+	section {
+	}
+
+	@include developer() {
+	}
+
+	@include dreamer() {
+	}
 }

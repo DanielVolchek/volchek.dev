@@ -20,7 +20,8 @@ export default function LayoutWrapper({
 }: Props) {
 	return (
 		<>
-			<Header />
+			{/* <Header /> */}
+			<div className="spacer" style={{ marginBottom: "2.5em" }}></div>
 			<MainHeroModule HeroAbout={HeroAbout} />
 			<AboutSectionModule AboutMeAside={AboutMeAside} />
 			<CardSectionModule Cards={Cards} />

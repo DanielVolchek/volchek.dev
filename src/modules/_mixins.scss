@@ -1,0 +1,28 @@
+@mixin global {
+	.global {
+		@content;
+	}
+}
+
+@mixin developer {
+	&.developer {
+		@content;
+	}
+}
+
+@mixin dreamer {
+	&.dreamer {
+		@content;
+	}
+}
+
+// @include global() {
+
+//     @include developer(){
+
+//     }
+
+//     @include dreamer(){
+
+//     }
+// }

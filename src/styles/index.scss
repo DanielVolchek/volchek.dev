@@ -2,6 +2,10 @@
 @import "vars";
 
 body {
+	background-color: #0a192f;
+	color: white;
 	font-size: $font-size;
 	font-family: $font-family;
+	padding-left: 1em;
+	padding-right: 1em;
 }

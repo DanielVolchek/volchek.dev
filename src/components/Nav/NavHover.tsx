@@ -1,6 +1,7 @@
 import useBreakpoints from "@/lib/hooks/useBreakpoints";
 import React, { MouseEventHandler, useState } from "react";
 import NavLink from "./NavLink";
+import styles from "./Nav.module.scss";
 
 type Props = {
 	href: string;
@@ -26,14 +27,14 @@ export default function NavHover({ href, name, children }: Props) {
 
 	return (
 		<>
-			<div onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+			<div
+				className={styles.navhover}
+				onMouseEnter={onMouseEnter}
+				onMouseLeave={onMouseLeave}
+				//
+			>
 				<NavLink href={href} name={name} />
-				{showingLinks && (
-					<section
-						style={{ display: "flex", flexDirection: "column" }}>
-						{children}
-					</section>
-				)}
+				{showingLinks && <section>{children}</section>}
 			</div>
 		</>
 	);
