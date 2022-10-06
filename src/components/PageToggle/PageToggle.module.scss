@@ -1,58 +1,88 @@
+@use "keyframes" as *;
+@import url("https://fonts.googleapis.com/css2?family=Gemunu+Libre&display=swap");
+
 .pagetoggle {
+	letter-spacing: 1px;
+	font-family: "Gemunu Libre", Arial, Helvetica, sans-serif;
+	cursor: pointer;
+	text-transform: uppercase;
+	font-size: 2em;
+	font-style: italic;
 	position: relative;
 	display: inline-block;
-	z-index: 1;
+	margin-left: 0.5em;
 
-	.cover {
-		z-index: -1;
-
-		background: rgb(244, 85, 8);
-		background: linear-gradient(
-			90deg,
-			rgba(244, 85, 8, 1) 13%,
-			rgba(255, 216, 0, 1) 100%
-		);
-
-		content: "";
+	animation: glitch 0.5s infinite;
+	&::before {
+		content: attr(data-text);
 		position: absolute;
-		height: 100%;
-		width: 100%;
-		left: 0;
-
-		transform: scaleX(0);
-		transition: transform 250ms linear;
+		left: -2px;
+		text-shadow: -2px 0 lightgreen;
+		top: 0;
+		animation: noise-1 3s linear infinite alternate-reverse,
+			glitch 5s infinite;
 	}
 
-	&:hover {
-		.cover {
-			// transform: scaleX(1);
-			// transform-origin: left;
-		}
+	&::after {
+		content: attr(data-text);
+		position: absolute;
+		left: -2px;
+		text-shadow: -2px 0 magenta;
+		top: 0;
+		animation: noise-2 3s linear infinite alternate-reverse,
+			glitch 5s 5s infinite;
 	}
 
-	h1:has(&) {
-		display: block;
-	}
+	// .cover {
+	// 	z-index: -1;
+
+	// 	background: rgb(244, 85, 8);
+	// 	background: linear-gradient(
+	// 		90deg,
+	// 		rgba(244, 85, 8, 1) 13%,
+	// 		rgba(255, 216, 0, 1) 100%
+	// 	);
+
+	// 	content: "";
+	// 	position: absolute;
+	// 	height: 100%;
+	// 	width: 100%;
+	// 	left: 0;
+
+	// 	transform: scaleX(0);
+	// 	transition: transform 250ms linear;
+	// }
+
+	// &:hover {
+
+	// 	// .cover {
+	// 	// 	// transform: scaleX(1);
+	// 	// 	// transform-origin: left;
+	// 	// }
+	// }
+
+	// h1:has(&) {
+	// 	display: block;
+	// }
 }
 
-.animateHeaderClass {
-	animation: animateHeader 500ms linear forwards;
+// .animateHeaderClass {
+// 	animation: animateHeader 500ms linear forwards;
+// }
+
+.cover {
+	width: 100vw;
+	height: 100vh;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 10;
+
+	background-color: blue;
+
+	opacity: 0.8;
 }
 
-@keyframes animateHeader {
-	0% {
-		transform-origin: left;
-		transform: scaleX(0);
-	}
-	50% {
-		transform-origin: left;
-		transform: scaleX(1);
-	}
-	51% {
-		transform-origin: right;
-	}
-	100% {
-		transform-origin: right;
-		transform: scaleX(0);
-	}
+@keyframes coverSkew {
 }

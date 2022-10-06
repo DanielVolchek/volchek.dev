@@ -1,6 +1,8 @@
 @use "src/modules/mixins" as *;
 
 @include global() {
+	font-size: 2em;
+
 	padding-bottom: 1.5em;
 	border-bottom: 2px solid white;
 	margin-bottom: 4em;
@@ -21,10 +23,10 @@
 	}
 
 	// pagetoggle
-	h1 > span {
-		font-size: 2em;
-		animation: boun;
-	}
+	// h1 > span {
+	// 	font-size: 2em;
+	// 	animation: boun;
+	// }
 
 	//  about hero section
 	section {

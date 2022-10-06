@@ -9,8 +9,21 @@ export default function PageToggle() {
 	const appState = useAppStateConsumer();
 	const setAppState = useAppStateUpdater();
 
+	const [showing, setShowing] = useState(false);
 	useEffect(() => {
+		setShowing(true);
+
+		const resetCallback = () => {
+			setShowing(false);
+		};
+
+		const animationTimeout = setTimeout(resetCallback, 500);
 		animateUpdate();
+
+		return () => {
+			resetCallback();
+			clearTimeout(animationTimeout);
+		};
 	}, [appState]);
 
 	// useEffect(() => {
@@ -49,12 +62,15 @@ export default function PageToggle() {
 	};
 
 	return (
-		<span
-			ref={spanRef}
-			onClick={updatePage}
-			className={`${styles.pagetoggle} ${styles.bouncetop}`}>
-			<div ref={coverRef} className={styles.cover}></div>
-			{appState}
-		</span>
+		<>
+			{showing && <div className={styles.cover}></div>}
+			<span
+				data-text={appState}
+				ref={spanRef}
+				onClick={updatePage}
+				className={`${styles.pagetoggle} ${styles.bouncetop}`}>
+				{appState}
+			</span>
+		</>
 	);
 }

@@ -12,7 +12,7 @@ export default function AboutSectionModule({ AboutMeAside }: Props) {
 			<h3>---About Me---</h3>
 			<div>
 				{/* todo */}
-				<Image src={""} className={styles.aboutimg} />
+				{/* <Image src={"helloworld.jpg"} className={styles.aboutimg} /> */}
 				<p className={styles.content}>{AboutMeAside}</p>
 			</div>
 		</section>

@@ -1,3 +1,4 @@
+import GlitchBackground from "@/components/GlitchBackground/GlitchBackground";
 import type { NextPage } from "next";
 import Head from "next/head";
 
@@ -7,7 +8,7 @@ const test: NextPage = () => {
 			<Head>
 				<title>Volchek.Dev - Test</title>
 			</Head>
-			Empty
+			<GlitchBackground />
 		</>
 	);
 };
