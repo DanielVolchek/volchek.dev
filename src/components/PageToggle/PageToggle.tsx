@@ -1,6 +1,7 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import styles from "./PageToggle.module.scss";
 import { useAppStateConsumer, useAppStateUpdater } from "@/lib/ContextWrapper";
+import GlitchBackground from "../GlitchBackground/GlitchBackground";
 
 export default function PageToggle() {
 	const coverRef = useRef<HTMLHeadingElement>(null);
@@ -17,7 +18,10 @@ export default function PageToggle() {
 			setShowing(false);
 		};
 
-		const animationTimeout = setTimeout(resetCallback, 500);
+		// todo
+		// switch out images with generator
+		// https://snorpey.github.io/jpg-glitch/
+		const animationTimeout = setTimeout(resetCallback, 300);
 		animateUpdate();
 
 		return () => {
@@ -43,14 +47,14 @@ export default function PageToggle() {
 	// }, []);
 
 	const animateUpdate = () => {
-		if (!coverRef.current) return;
-		coverRef.current.classList.add(styles.animateHeaderClass as string);
-		setTimeout(() => {
-			if (coverRef.current)
-				coverRef.current.classList.remove(
-					styles.animateHeaderClass as string
-				);
-		}, 500);
+		// if (!coverRef.current) return;
+		// coverRef.current.classList.add(styles.animateHeaderClass as string);
+		// setTimeout(() => {
+		// 	if (coverRef.current)
+		// 		coverRef.current.classList.remove(
+		// 			styles.animateHeaderClass as string
+		// 		);
+		// }, 200);
 	};
 
 	const updatePage = () => {
@@ -63,7 +67,7 @@ export default function PageToggle() {
 
 	return (
 		<>
-			{showing && <div className={styles.cover}></div>}
+			{showing && <GlitchBackground />}
 			<span
 				data-text={appState}
 				ref={spanRef}

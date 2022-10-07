@@ -10,7 +10,7 @@ const Home: NextPage = () => {
 	return (
 		<>
 			<Head>
-				<title>Volchek.Dev</title>
+				<title>Volchek Dev</title>
 			</Head>
 			{appState === "Developer" ? <Developer /> : <Dreamer />}
 		</>

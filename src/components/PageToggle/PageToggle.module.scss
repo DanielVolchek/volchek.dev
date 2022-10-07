@@ -12,7 +12,7 @@
 	display: inline-block;
 	margin-left: 0.5em;
 
-	animation: glitch 0.5s infinite;
+	animation: glitch 5s infinite;
 	&::before {
 		content: attr(data-text);
 		position: absolute;
@@ -27,7 +27,7 @@
 		content: attr(data-text);
 		position: absolute;
 		left: -2px;
-		text-shadow: -2px 0 magenta;
+		text-shadow: -2px 0 lightblue;
 		top: 0;
 		animation: noise-2 3s linear infinite alternate-reverse,
 			glitch 5s 5s infinite;

@@ -48,8 +48,11 @@ $glitch-13: "";
 // 	height: 100%;
 // }
 .wrapper {
-	position: relative;
-	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
 	min-height: 700px;
 	padding: 20% 10% 10%;
 	background-color: #222;
