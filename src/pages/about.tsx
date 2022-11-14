@@ -1,15 +1,12 @@
-import type { InferGetStaticPropsType, NextPage } from "next";
-import g from "glob";
+import type { NextPage } from "next";
 import Head from "next/head";
 
-const Blog: NextPage = ({}) => {
+const About: NextPage = ({}) => {
   return (
     <>
       <Head>
-        <title>Blog - Volchek.Dev</title>
+        <title>About - Volchek.Dev</title>
       </Head>
     </>
   );
 };
-
-export default Blog;

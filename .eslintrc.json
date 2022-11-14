@@ -10,7 +10,6 @@
     "plugin:@typescript-eslint/recommended"
   ],
   "rules": {
-    "@typescript-eslint/consistent-type-imports": "warn",
-    "prettier/prettier": "error"
+    "@typescript-eslint/consistent-type-imports": "warn"
   }
 }
