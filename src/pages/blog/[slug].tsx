@@ -21,7 +21,7 @@ const BlogPost: NextPage<Props> = ({ result }) => {
 
 export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
   const slug = params?.slug as string;
-  const postPath = `src/pages/blog/posts/${slug}.md`;
+  const postPath = `src/posts/${slug}.md`;
   if (!slug || !fs.existsSync(postPath))
     return {
       notFound: true,
@@ -43,7 +43,7 @@ export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
 };
 
 export const getStaticPaths = async () => {
-  const pages = g.sync("src/pages/blog/posts/*.md");
+  const pages = g.sync("src/posts/*.md");
   if (!pages) return { paths: [], fallback: false };
   return {
     paths: pages.map((page) => ({

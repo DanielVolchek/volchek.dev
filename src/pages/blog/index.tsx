@@ -29,7 +29,7 @@ export const getStaticProps = async () => {
   let data;
   let parsed;
   try {
-    data = fs.readFileSync("src/pages/blog/posts/posts.json", "utf-8");
+    data = fs.readFileSync("src/posts/posts.json", "utf-8");
     if (!data) return null;
     console.log(data);
     parsed = JSON.parse(data) as Post[];
