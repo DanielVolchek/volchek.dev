@@ -22,14 +22,14 @@ const projects: CardProps[] = [
     desc: "A largescale chat app for all CUNY students",
     img: hchat,
     longdesc: "",
-    stack: ["javascript", "react", "go", "css", "postgresql"],
+    stack: ["typescript", "react", "tailwind", "electron", "nodejs"],
   },
   {
     title: "Volchek.Dev",
     desc: "A largescale chat app for all CUNY students",
     img: hchat,
     longdesc: "",
-    stack: ["javascript", "react", "go", "css", "postgresql"],
+    stack: ["typescript", "react", "tailwind", "nextjs", "postgresql"],
   },
 ];
 

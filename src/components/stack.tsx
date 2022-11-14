@@ -6,9 +6,9 @@ import postgresqlSVG from "../images/langicons/postgresql";
 import javascriptSVG from "../images/langicons/javascript";
 import tailwindSVG from "../images/langicons/tailwind";
 import sassSVG from "../images/langicons/sass";
-import { useState } from "react";
 import nodejsSVG from "../images/langicons/nodejs";
 import electronSVG from "../images/langicons/electron";
+import nextJSSVG from "../images/langicons/nextjs";
 
 export type Stack =
   | "react"
@@ -19,6 +19,7 @@ export type Stack =
   | "javascript"
   | "tailwind"
   | "electron"
+  | "nextjs"
   | "nodejs"
   | "sass";
 
@@ -50,6 +51,7 @@ const StackSVG = ({ stack, mouseOver }: { stack: Stack, mouseOver: boolean}) => 
     sass: sassSVG,
     nodejs: nodejsSVG,
     electron: electronSVG,
+    nextjs: nextJSSVG,
   };
   const el = map[stack];
   if (!el) throw new Error("Invalid stack ID");
