@@ -1,5 +1,5 @@
 import Image, { StaticImageData } from "next/image";
-import type {Stack as StackType} from "./stack";
+import type { Stack as StackType } from "./stack";
 import Stack from "./stack";
 
 export type CardProps = {
@@ -8,7 +8,7 @@ export type CardProps = {
   img: StaticImageData;
   longdesc: string;
   stack: StackType[];
-}
+};
 
 export default function Card({ title, desc, img, longdesc, stack }: CardProps) {
   return (
@@ -24,8 +24,8 @@ export default function Card({ title, desc, img, longdesc, stack }: CardProps) {
         <h2 className="text-center text-4xl font-bold">{title}</h2>
         <p>{desc}</p>
       </div>
-        <div className="w-3/4 mt-8">
-      <Stack stack={stack}/>
+      <div className="mt-8 w-3/4">
+        <Stack stack={stack} />
       </div>
     </div>
   );

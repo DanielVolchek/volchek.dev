@@ -1,6 +1,6 @@
 import { type AppType } from "next/dist/shared/lib/utils";
 import Layout from "../layouts/base";
-import "devicon/devicon.min.css"
+import "devicon/devicon.min.css";
 import "../styles/globals.css";
 
 const MyApp: AppType = ({ Component, pageProps }) => {

@@ -23,7 +23,7 @@ type Props = {
 
 export default function Stack({ stack: fullstack }: Props) {
   return (
-    <div className="border-2 rounded-xl border-slate-400 flex w-full gap-3 p-4 hover:grayscale-0">
+    <div className="flex w-full gap-3 rounded-xl border-2 border-slate-400 p-4 hover:grayscale-0">
       {fullstack.map((stack) => (
         <StackSVG key={stack} stack={stack} />
       ))}

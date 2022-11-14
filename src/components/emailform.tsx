@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-      // url: "https://formbold.com/s/60Geo",
+// url: "https://formbold.com/s/60Geo",
 export default function EmailForm() {
   // Input Change Handling
   const [inputs, setInputs] = useState({
@@ -9,7 +9,7 @@ export default function EmailForm() {
     message: "",
   });
   const handleOnChange = (
-    event: React.FormEvent<HTMLInputElement|HTMLTextAreaElement>
+    event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     event.persist();
     setInputs((prev) => ({
@@ -22,8 +22,8 @@ export default function EmailForm() {
 
   const handleOnSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-  }
-  
+  };
+
   return (
     <form onSubmit={handleOnSubmit}>
       <input
