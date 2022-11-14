@@ -3,12 +3,25 @@ import type { InferGetStaticPropsType, NextPage } from "next";
 import g from "glob";
 import { useMemo } from "react";
 
+type BlogPost = {
+  title: string;
+  desc: string;
+  tags: string[];
+  slug: string;
+};
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Blog: NextPage<Props> = ({ data }) => {
-  const parsed = useMemo(() => {
+  const links = useMemo<BlogPost[]|null>(() => {
     if (!data) return null;
-    let result = JSON.parse(data.map((post) => {}));
+    console.log(data);
+    const parsed = JSON.parse(data);
+    if (!Array.isArray(parsed))
+      throw new Error(
+        "BlogPost data formatted incorrectly: expected array, received ",
+        parsed
+      );
+    return parsed as BlogPost[];
   }, [data]);
   return (
     <>
