@@ -35,7 +35,7 @@ const projects: CardProps[] = [
 
 export default function Projects() {
   return (
-      <div className="my-4 flex flex-col justify-center gap-x-8 gap-y-4 lg:flex-row lg:flex-wrap">
+    <div className="my-4 flex flex-col justify-center gap-x-8 gap-y-4 lg:flex-row lg:flex-wrap">
       {projects.map((project) => (
         <Card
           key={project.title}

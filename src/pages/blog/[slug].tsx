@@ -5,16 +5,16 @@ import Head from "next/head";
 import parseMarkdown from "../../lib/parsemarkdown";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
-const BlogPost: NextPage<Props> = ({title, result }) => {
+const BlogPost: NextPage<Props> = ({ title, result }) => {
   return (
     <>
-    <Head>
-        <title>{title.replace('-', ' ')} - Volchek.Dev</title>
-    </Head>
-    <article
-      className="prose"
-      dangerouslySetInnerHTML={{ __html: result.toString() }}
-    ></article>
+      <Head>
+        <title>{title.replace("-", " ")} - Volchek.Dev</title>
+      </Head>
+      <article
+        className="prose"
+        dangerouslySetInnerHTML={{ __html: result.toString() }}
+      ></article>
     </>
   );
 };

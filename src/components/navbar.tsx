@@ -1,5 +1,5 @@
 import Link from "./link";
-import {breakpoints} from "../layouts/base"
+import { breakpoints } from "../layouts/base";
 
 export default function Nav() {
   const navstyles = "text-2xl";

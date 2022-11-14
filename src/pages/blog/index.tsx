@@ -2,15 +2,15 @@ import * as fs from "fs";
 import type { InferGetStaticPropsType, NextPage } from "next";
 import g from "glob";
 import { useEffect, useMemo } from "react";
-import PostInfo, {Post} from "../../components/postinfo";
+import PostInfo, { Post } from "../../components/postinfo";
 import Head from "next/head";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Blog: NextPage<Props> = ({ data }) => {
   useEffect(() => {
-    console.log(data)
-  }, [data])
+    console.log(data);
+  }, [data]);
   return (
     <>
       <>
@@ -18,7 +18,7 @@ const Blog: NextPage<Props> = ({ data }) => {
           <title>Blog - Volchek.Dev</title>
         </Head>
         {data?.map((post) => {
-          return <PostInfo {...post}/>
+          return <PostInfo {...post} />;
         })}
       </>
     </>
@@ -38,8 +38,8 @@ export const getStaticProps = async () => {
         "BlogPost data formatted incorrectly: expected array, received ",
         parsed
       );
-  } catch(e){
-    console.error("Error in gsp on blog/index: ", e)
+  } catch (e) {
+    console.error("Error in gsp on blog/index: ", e);
     return {
       props: {
         notFound: true,
@@ -48,8 +48,8 @@ export const getStaticProps = async () => {
   }
 
   return {
-    props: { 
-      data: parsed
+    props: {
+      data: parsed,
     },
   };
 };

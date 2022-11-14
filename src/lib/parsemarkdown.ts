@@ -6,7 +6,7 @@ import rehypeRaw from "rehype-raw";
 import rehypeSanitize from "rehype-sanitize";
 import rehypeStringify from "rehype-stringify";
 
-export default async function parseMarkdown(filename: string){
+export default async function parseMarkdown(filename: string) {
   const result = await unified()
     .use(remarkParse)
     .use(remarkRehype, { allowDangerousHtml: true })
@@ -15,4 +15,4 @@ export default async function parseMarkdown(filename: string){
     .use(rehypeStringify)
     .process(await read(filename));
   return result;
-} 
+}

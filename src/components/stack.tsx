@@ -29,17 +29,22 @@ type Props = {
 };
 
 export default function Stack({ stack: fullstack, mousedOver }: Props) {
-
   return (
     <div className="flex w-full gap-3 rounded-xl border-2 border-slate-400 p-4 hover:grayscale-0">
       {fullstack.map((stack) => (
-        <StackSVG key={stack} stack={stack} mouseOver={mousedOver}/>
+        <StackSVG key={stack} stack={stack} mouseOver={mousedOver} />
       ))}
     </div>
   );
 }
 
-const StackSVG = ({ stack, mouseOver }: { stack: Stack, mouseOver: boolean}) => {
+const StackSVG = ({
+  stack,
+  mouseOver,
+}: {
+  stack: Stack;
+  mouseOver: boolean;
+}) => {
   const map: { [key: string]: () => JSX.Element } = {
     react: reactSVG,
     css: cssSVG,
@@ -57,6 +62,12 @@ const StackSVG = ({ stack, mouseOver }: { stack: Stack, mouseOver: boolean}) => 
   if (!el) throw new Error("Invalid stack ID");
 
   return (
-    <span className={ `h-min w-full lg:grayscale${mouseOver ? "-0" : ""} transition-all`}>{el()}</span>
+    <span
+      className={`h-min w-full lg:grayscale${
+        mouseOver ? "-0" : ""
+      } transition-all`}
+    >
+      {el()}
+    </span>
   );
 };
