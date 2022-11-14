@@ -18,14 +18,14 @@ const projects: CardProps[] = [
     stack: ["typescript", "react", "electron", "nodejs", "sass"],
   },
   {
-    title: "hChat",
+    title: "GenTaX",
     desc: "A largescale chat app for all CUNY students",
     img: hchat,
     longdesc: "",
     stack: ["javascript", "react", "go", "css", "postgresql"],
   },
   {
-    title: "hChat",
+    title: "Volchek.Dev",
     desc: "A largescale chat app for all CUNY students",
     img: hchat,
     longdesc: "",

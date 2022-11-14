@@ -1,21 +1,21 @@
 import * as fs from "fs";
 import g from "glob";
 import { GetStaticPropsContext, InferGetStaticPropsType, NextPage } from "next";
-import { unified } from "unified";
-import { read } from "to-vfile";
-import remarkParse from "remark-parse";
-import remarkRehype from "remark-rehype";
-import rehypeRaw from "rehype-raw";
-import rehypeSanitize from "rehype-sanitize";
-import rehypeStringify from "rehype-stringify";
+import Head from "next/head";
+import parseMarkdown from "../../lib/parsemarkdown";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
-const BlogPost: NextPage<Props> = ({ result }) => {
+const BlogPost: NextPage<Props> = ({title, result }) => {
   return (
+    <>
+    <Head>
+        <title>{title.replace('-', ' ')} - Volchek.Dev</title>
+    </Head>
     <article
       className="prose"
       dangerouslySetInnerHTML={{ __html: result.toString() }}
     ></article>
+    </>
   );
 };
 
@@ -27,16 +27,11 @@ export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
       notFound: true,
     };
 
-  const result = await unified()
-    .use(remarkParse)
-    .use(remarkRehype, { allowDangerousHtml: true })
-    .use(rehypeRaw)
-    .use(rehypeSanitize)
-    .use(rehypeStringify)
-    .process(await read(postPath));
+  const result = await parseMarkdown(postPath);
   console.log(result);
   return {
     props: {
+      title: slug,
       result: result.value,
     },
   };
