@@ -1,4 +1,5 @@
 import Image, { StaticImageData } from "next/image";
+import { useState } from "react";
 import type { Stack as StackType } from "./stack";
 import Stack from "./stack";
 
@@ -11,8 +12,12 @@ export type CardProps = {
 };
 
 export default function Card({ title, desc, img, longdesc, stack }: CardProps) {
+  const [mousedOver, setMouseOver] = useState(false);
   return (
-    <div className="lg:min-h[25vh] flex min-h-[50vh] cursor-pointer flex-col items-center rounded-lg border-2 border-gray-200 shadow-lg shadow-gray-200 transition-transform duration-[350ms] hover:scale-105 lg:w-1/2">
+    <div 
+      onMouseEnter={() => setMouseOver(() => true)} 
+      onMouseLeave={() => setMouseOver(() => false)} 
+      className="text-center lg:min-h[25vh] flex min-h-[50vh] bg-white cursor-pointer flex-col items-center rounded-lg border-2 border-gray-200 shadow-lg shadow-gray-200 transition-transform duration-[350ms] hover:scale-105 lg:w-5/12">
       <div className="w-full rounded-lg border-b-2 border-gray-200 p-3">
         <Image
           src={img}
@@ -24,8 +29,8 @@ export default function Card({ title, desc, img, longdesc, stack }: CardProps) {
         <h2 className="text-center text-4xl font-bold">{title}</h2>
         <p>{desc}</p>
       </div>
-      <div className="mt-8 w-3/4">
-        <Stack stack={stack} />
+      <div className="mt-8 w-11/12 pb-4">
+        <Stack stack={stack} mousedOver={mousedOver}/>
       </div>
     </div>
   );

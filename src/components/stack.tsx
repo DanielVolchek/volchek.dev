@@ -6,6 +6,9 @@ import postgresqlSVG from "../images/langicons/postgresql";
 import javascriptSVG from "../images/langicons/javascript";
 import tailwindSVG from "../images/langicons/tailwind";
 import sassSVG from "../images/langicons/sass";
+import { useState } from "react";
+import nodejsSVG from "../images/langicons/nodejs";
+import electronSVG from "../images/langicons/electron";
 
 export type Stack =
   | "react"
@@ -15,23 +18,27 @@ export type Stack =
   | "typescript"
   | "javascript"
   | "tailwind"
+  | "electron"
+  | "nodejs"
   | "sass";
 
 type Props = {
   stack: Stack[];
+  mousedOver: boolean;
 };
 
-export default function Stack({ stack: fullstack }: Props) {
+export default function Stack({ stack: fullstack, mousedOver }: Props) {
+
   return (
     <div className="flex w-full gap-3 rounded-xl border-2 border-slate-400 p-4 hover:grayscale-0">
       {fullstack.map((stack) => (
-        <StackSVG key={stack} stack={stack} />
+        <StackSVG key={stack} stack={stack} mouseOver={mousedOver}/>
       ))}
     </div>
   );
 }
 
-const StackSVG = ({ stack }: { stack: Stack }) => {
+const StackSVG = ({ stack, mouseOver }: { stack: Stack, mouseOver: boolean}) => {
   const map: { [key: string]: () => JSX.Element } = {
     react: reactSVG,
     css: cssSVG,
@@ -41,11 +48,13 @@ const StackSVG = ({ stack }: { stack: Stack }) => {
     javascript: javascriptSVG,
     tailwind: tailwindSVG,
     sass: sassSVG,
+    nodejs: nodejsSVG,
+    electron: electronSVG,
   };
   const el = map[stack];
   if (!el) throw new Error("Invalid stack ID");
 
   return (
-    <span className="h-min w-full hover:grayscale-0 lg:grayscale">{el()}</span>
+    <span className={ `h-min w-full lg:grayscale${mouseOver ? "-0" : ""} transition-all`}>{el()}</span>
   );
 };

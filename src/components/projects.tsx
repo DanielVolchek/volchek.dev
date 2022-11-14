@@ -11,11 +11,11 @@ const projects: CardProps[] = [
     stack: ["javascript", "react", "go", "css", "postgresql"],
   },
   {
-    title: "hChat",
+    title: "SOAP",
     desc: "A largescale chat app for all CUNY students",
     img: hchat,
     longdesc: "",
-    stack: ["javascript", "react", "go", "css", "postgresql"],
+    stack: ["typescript", "react", "electron", "nodejs", "sass"],
   },
   {
     title: "hChat",
@@ -35,7 +35,7 @@ const projects: CardProps[] = [
 
 export default function Projects() {
   return (
-    <div className="flex flex-col lg:flex-row lg:flex-wrap">
+      <div className="my-4 flex flex-col justify-center gap-x-8 gap-y-4 lg:flex-row lg:flex-wrap">
       {projects.map((project) => (
         <Card
           key={project.title}
