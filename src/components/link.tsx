@@ -1,4 +1,5 @@
 import Link from "next/link";
+import colors from "../lib/colors";
 export default function StyledLink({
   href,
   content,
@@ -10,7 +11,7 @@ export default function StyledLink({
 }) {
   return (
     <Link
-      className={`decoration-2 hover:text-slate-600 hover:underline active:text-blue-500 ${className}`}
+      className={`text-teal-300 decoration-2 hover:text-black hover:underline active:text-black ${className}`}
       href={href}
     >
       {content}

@@ -30,7 +30,7 @@ type Props = {
 
 export default function Stack({ stack: fullstack, mousedOver }: Props) {
   return (
-    <div className="flex w-full gap-3 rounded-xl border-2 border-slate-400 p-4 hover:grayscale-0">
+    <div className="flex w-full gap-3 rounded-xl border-2 border-teal-300 p-4 hover:grayscale-0">
       {fullstack.map((stack) => (
         <StackSVG key={stack} stack={stack} mouseOver={mousedOver} />
       ))}
