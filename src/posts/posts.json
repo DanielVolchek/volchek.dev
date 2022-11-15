@@ -3,6 +3,7 @@
     "title": "Hello, World!",
     "desc": "This is my first post on my new blogging website",
     "tags": [""],
-    "slug": "hello-world"
+    "slug": "hello-world",
+    "date": "11/14/2022"
   }
 ]

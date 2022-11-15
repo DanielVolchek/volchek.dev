@@ -1,9 +1,11 @@
 import * as fs from "fs";
 import type { InferGetStaticPropsType, NextPage } from "next";
-import g from "glob";
-import { useEffect, useMemo } from "react";
-import PostInfo, { Post } from "../../components/postinfo";
+import { useEffect } from "react";
+import type { Post } from "../../components/postinfo";
+import PostInfo from "../../components/postinfo";
 import Head from "next/head";
+import { fetchAllPostData, postsDir } from "../../lib/fetchpost";
+import * as path from "path";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -18,7 +20,7 @@ const Blog: NextPage<Props> = ({ data }) => {
           <title>Blog - Volchek.Dev</title>
         </Head>
         {data?.map((post) => {
-          return <PostInfo {...post} />;
+          return <PostInfo key={post.slug} {...post} />;
         })}
       </>
     </>
@@ -27,16 +29,14 @@ const Blog: NextPage<Props> = ({ data }) => {
 
 export const getStaticProps = async () => {
   let data;
-  let parsed;
   try {
-    data = fs.readFileSync("src/posts/posts.json", "utf-8");
+    data = fetchAllPostData();
     if (!data) return null;
-    console.log(data);
-    parsed = JSON.parse(data) as Post[];
-    if (!Array.isArray(parsed))
+    if (!Array.isArray(data))
       throw new Error(
-        "BlogPost data formatted incorrectly: expected array, received ",
-        parsed
+        `BlogPost data formatted incorrectly: expected array, received ${JSON.stringify(
+          data
+        )}`
       );
   } catch (e) {
     console.error("Error in gsp on blog/index: ", e);
@@ -49,7 +49,7 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      data: parsed,
+      data,
     },
   };
 };

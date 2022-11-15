@@ -1,19 +1,25 @@
 import * as fs from "fs";
 import g from "glob";
-import { GetStaticPropsContext, InferGetStaticPropsType, NextPage } from "next";
+import type {
+  GetStaticPropsContext,
+  InferGetStaticPropsType,
+  NextPage,
+} from "next";
 import Head from "next/head";
 import parseMarkdown from "../../lib/parsemarkdown";
+import * as path from "path";
+import { fetchPostData, postsDir } from "../../lib/fetchpost";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
-const BlogPost: NextPage<Props> = ({ title, result }) => {
+const BlogPost: NextPage<Props> = ({ post, markdown }) => {
   return (
     <>
       <Head>
-        <title>{title.replace("-", " ")} - Volchek.Dev</title>
+        <title>{`${post.title} - Volchek.Dev`}</title>
       </Head>
       <article
         className="prose"
-        dangerouslySetInnerHTML={{ __html: result.toString() }}
+        dangerouslySetInnerHTML={{ __html: markdown.toString() }}
       ></article>
     </>
   );
@@ -21,24 +27,25 @@ const BlogPost: NextPage<Props> = ({ title, result }) => {
 
 export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
   const slug = params?.slug as string;
-  const postPath = `src/posts/${slug}.md`;
+  const postPath = path.join(postsDir, `${slug}.md`);
   if (!slug || !fs.existsSync(postPath))
     return {
       notFound: true,
     };
 
   const result = await parseMarkdown(postPath);
-  console.log(result);
+  const post = fetchPostData(slug);
+  console.log(post);
   return {
     props: {
-      title: slug,
-      result: result.value,
+      post,
+      markdown: result.value,
     },
   };
 };
 
 export const getStaticPaths = async () => {
-  const pages = g.sync("src/posts/*.md");
+  const pages = g.sync(path.join(postsDir, "*.md"));
   if (!pages) return { paths: [], fallback: false };
   return {
     paths: pages.map((page) => ({

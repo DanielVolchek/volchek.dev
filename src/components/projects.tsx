@@ -1,6 +1,7 @@
 import type { CardProps } from "./card";
 import Card from "./card";
 import hchat from "../images/projects/hChat.png";
+import gentax from "../images/projects/gentax.png";
 
 const projects: CardProps[] = [
   {
@@ -20,7 +21,7 @@ const projects: CardProps[] = [
   {
     title: "GenTaX",
     desc: "A largescale chat app for all CUNY students",
-    img: hchat,
+    img: gentax,
     longdesc: "",
     stack: ["typescript", "react", "tailwind", "electron", "nodejs"],
   },

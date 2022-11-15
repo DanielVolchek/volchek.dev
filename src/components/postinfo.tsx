@@ -5,9 +5,10 @@ export type Post = {
   desc: string;
   tags: string[];
   slug: string;
+  date: string;
 };
 
-export default function PostInfo({ title, desc, tags, slug }: Post) {
+export default function PostInfo({ title, desc, tags, slug, date }: Post) {
   return (
     <div>
       <Link href={`/blog/${slug}`} content={title} />
