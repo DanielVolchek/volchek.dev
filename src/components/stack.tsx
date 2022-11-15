@@ -63,7 +63,7 @@ const StackSVG = ({
 
   return (
     <span
-      className={`h-min w-full lg:grayscale${
+      className={`h-min w-full md:grayscale${
         mouseOver ? "-0" : ""
       } transition-all`}
     >

@@ -8,7 +8,9 @@ export default function base({ children }: { children: React.ReactNode }) {
     <>
       <>
         <Header />
-        <main className={`mx-auto mt-4 ${breakpoints} px-4`}>{children}</main>
+        <main className={`mx-auto mt-4 min-h-screen ${breakpoints} px-4`}>
+          {children}
+        </main>
         <Footer />
       </>
     </>
