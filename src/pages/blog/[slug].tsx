@@ -45,22 +45,25 @@ export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
 };
 
 export const getStaticPaths = async () => {
-  console.log("getstaticpaths");
   const pages = g.sync(path.join(postsDir, "*.md"));
+
   if (!pages) return { paths: [], fallback: false };
-  console.log("passed");
   if (new Set(pages).size !== pages.length)
     throw new Error("Duplicate slugs found in posts");
+
   const pageData = fetchAllPostData();
+
+  const ids = pageData.map((data) => data.id);
+  if (new Set(ids).size !== ids.length)
+    throw new Error("Duplicate ids found in posts.json");
+
   const paths = pages.map((page) => {
     const slug = page.split("/").pop()?.replace(".md", "");
     if (!pageData.find((data) => data.slug === slug))
       throw new Error(`No post found in posts.json for ${slug}`);
     return { params: { slug } };
   });
-  const ids = pageData.map((data) => data.id);
-  if (new Set(ids).size !== ids.length)
-    throw new Error("Duplicate ids found in posts.json");
+
   return {
     paths,
     fallback: false,

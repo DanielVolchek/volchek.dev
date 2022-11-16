@@ -58,14 +58,14 @@ const Home: NextPage = () => {
         <h2 className="pl-4 text-xl">I&apos;ve made some stuff already</h2>
         <Projects />
       </article>
+      <h2 className="text-2xl font-medium">Wanna get in contact?</h2>
       <article className="my-2 pl-4">
-        <h2 className="text-2xl font-medium">Wanna get in contact?</h2>
         <Section
           header={"Email me!"}
           p={
             <>
               I&apos;d love to hear from you! If you have any feedback, wanna
-              work together, or just wanna chat... shoot me an email over{" "}
+              collaborate, or just wanna chat... shoot me an email over{" "}
               <Link
                 href="mailto:daniel@volchek.dev?subject=Hi!"
                 content="here!"

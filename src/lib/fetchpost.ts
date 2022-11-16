@@ -1,4 +1,3 @@
-import type { Post } from "../components/postinfo";
 import * as fs from "fs";
 import * as path from "path";
 import z from "zod";
@@ -14,12 +13,12 @@ const postSchema = z.object({
   id: z.number(),
 });
 
+export type Post = z.infer<typeof postSchema>;
+
 export function fetchAllPostData(): Post[] {
   const data = fs.readFileSync(path.join(postsDir, "posts.json"), "utf-8");
   // throw an error if any posts are invalid
-  const parsedData = JSON.parse(data) as Post[];
-  for (const post of parsedData) validatePostData(post);
-  return JSON.parse(data) as Post[];
+  return z.array(postSchema).parse(JSON.parse(data));
 }
 
 export function fetchPostData(slug: string) {
@@ -28,8 +27,4 @@ export function fetchPostData(slug: string) {
     if (post.slug === slug) return post;
   }
   throw new Error("Post not found");
-}
-
-export function validatePostData(post: Post) {
-  postSchema.parse(post);
 }
