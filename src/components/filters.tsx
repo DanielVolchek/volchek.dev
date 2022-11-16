@@ -29,7 +29,11 @@ export default function Filters({
               currentlyFiltered={currentlyFiltered.includes(tag)}
               onClick={onClick}
             />
-            {index !== filterList.length - 1 ? "," : ""}
+            {index !== filterList.length - 1 ? (
+              <span className="font-extralight">,</span>
+            ) : (
+              ""
+            )}
           </>
         );
       })}
