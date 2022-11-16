@@ -2,13 +2,13 @@ import { breakpoints } from "../layouts/base";
 
 export default function Footer() {
   return (
-    <footer className={`relative mt-4 flex justify-center`}>
+    <footer className={`relative flex justify-center py-4`}>
       <div className="absolute left-0 top-0 h-1 w-screen bg-teal-300 "></div>
-      <div className={`flex justify-between ${breakpoints} px-4`}>
+      <div className={`flex items-center justify-between gap-4 ${breakpoints}`}>
         <h3 className="">Hello, World!</h3>
-        <div className="flex w-1/4">
-          <LinkedIn />
+        <div className="flex w-1/4 items-center justify-end gap-4">
           <Github />
+          <LinkedIn />
           <Email />
         </div>
       </div>
@@ -16,7 +16,7 @@ export default function Footer() {
   );
 }
 
-const linkClasses = "w-full";
+const linkClasses = "w-[100px] lg:w-[25px] lg:grayscale lg:hover:grayscale-0";
 const svgClasses = "";
 
 const LinkedIn = () => {

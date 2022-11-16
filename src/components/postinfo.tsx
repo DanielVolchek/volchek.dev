@@ -7,9 +7,10 @@ export type Post = {
   tags: string[];
   slug: string;
   date: string;
+  id: number;
 };
 
-export default function PostInfo({ title, desc, tags, slug, date }: Post) {
+export default function PostInfo({ title, desc, tags, slug, date, id }: Post) {
   return (
     <Link href={path.join("/blog", slug)}>
       <div className="rounded-sm border border-gray-200 px-4 py-2">

@@ -22,7 +22,7 @@ const About: NextPage = ({}) => {
                   <Image
                     src={me}
                     alt="Daniel Volchek - Profile Image"
-                    className="order-first mt-4 h-auto rounded-md border-4 border-teal-300 lg:order-last lg:ml-6 lg:w-[30vw] xl:w-[20vw]"
+                    className="order-first mt-4 h-auto rounded-md border-4 border-teal-300 lg:order-last lg:ml-6 lg:w-[25vw] xl:w-[18vw] 2xl:w-[15vw]"
                   />
                   <div className="flex flex-col">
                     <Section

@@ -1,15 +1,17 @@
-import * as fs from "fs";
 import type { InferGetStaticPropsType, NextPage } from "next";
-import { useEffect } from "react";
-import type { Post } from "../../components/postinfo";
+import { useEffect, useMemo } from "react";
 import PostInfo from "../../components/postinfo";
 import Head from "next/head";
-import { fetchAllPostData, postsDir } from "../../lib/fetchpost";
-import * as path from "path";
+import { fetchAllPostData } from "../../lib/fetchpost";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Blog: NextPage<Props> = ({ data }) => {
+  const posts = useMemo(() => {
+    if (!data) return null;
+    return data.sort((a, b) => b.id - a.id);
+  }, [data]);
+
   useEffect(() => {
     console.log(data);
   }, [data]);
@@ -19,7 +21,7 @@ const Blog: NextPage<Props> = ({ data }) => {
         <Head>
           <title>Blog - Volchek.Dev</title>
         </Head>
-        {data?.map((post) => {
+        {posts?.map((post) => {
           return <PostInfo key={post.slug} {...post} />;
         })}
       </>
