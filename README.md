@@ -1,27 +1,29 @@
-# Create T3 App
+# Volchek.Dev blog
 
-This is an app bootstrapped according to the [init.tips](https://init.tips) stack, also known as the T3-Stack.
+## What is it?
 
-## What's next? How do I make an app with this?
+This is a simple blog I put together so I can write about my programming activities and better contentualize them in my own head. If it happens to help anyone, that's an awesome side effect!
 
-We try to keep this project as simple as possible, so you can start with the most basic configuration and then move on to more advanced configuration.
+## Can I host it myself?
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+This type of blog is very easy to self-host. All you really have to do is fork it, edit the content as you please, and throw it up on Vercel. Feel free to do so if you'd like!
 
-- [Next-Auth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [TailwindCSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+## What tech did you use to make this?
 
-We also [roll our own docs](https://beta.create.t3.gg) with some summary information and links to the respective documentation.
+I bootstrapped this using [create-t3-app](https://github.com/t3-oss/create-t3-app), but mostly just for a quick tailwind & ts project. The stack as of now is as follows
 
-Also checkout these awesome tutorials on `create-t3-app`.
+- NextJS (framework)
+- Tailwind CSS (styling)
+- Remark (parsing markdown)
+  - Unified
+  - remark-parse
+  - remark-rehype
+  - rehype-parse
+  - rehype-raw
+  - rehype-sanitize
+  - rehype-stringify
+- Zod (typechecking JSON)
 
-- [Build a Blog With the T3 Stack - tRPC, TypeScript, Next.js, Prisma & Zod](https://www.youtube.com/watch?v=syEWlxVFUrY)
-- [Build a Live Chat Application with the T3 Stack - TypeScript, Tailwind, tRPC](https://www.youtube.com/watch?v=dXRRY37MPuk)
-- [Build a full stack app with create-t3-app](https://www.nexxel.dev/blog/ct3a-guestbook)
-- [A first look at create-t3-app](https://dev.to/ajcwebdev/a-first-look-at-create-t3-app-1i8f)
+## What's the link to the site?
 
-## How do I deploy this?
-
-Follow our deployment guides for [Vercel](https://beta.create.t3.gg/en/deployment/vercel) and [Docker](https://beta.create.t3.gg/en/deployment/docker) for more information.
+[Right here](https://volchek.dev)
