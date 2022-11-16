@@ -14,7 +14,7 @@ export default function PostInfo({
 }: Post & { currentlyFiltered: string[]; onClick: (tag: string) => void }) {
   return (
     <Link href={path.join("/blog", slug)}>
-      <div className="rounded-sm border border-gray-200 px-4 py-2">
+      <div className="rounded-sm border border-gray-200 px-4 py-2 hover:border-[3px] hover:border-teal-300">
         <div className="">
           <h2 className="text-3xl font-semibold capitalize">{title}</h2>
           <span className="text-xl text-slate-600 lg:text-base">{date}</span>

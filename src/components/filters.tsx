@@ -20,7 +20,7 @@ export default function Filters({
         filterListStyles ? "border-2 border-dashed border-teal-300 p-3" : ""
       }`}
     >
-      {filterList.map((tag, index) => {
+      {filterList.sort().map((tag, index) => {
         return (
           <>
             <FilteredTag
