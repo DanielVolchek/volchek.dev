@@ -18,7 +18,7 @@ export default function Card({ title, desc, img, longdesc, stack }: CardProps) {
     <div
       onMouseEnter={() => setMouseOver(() => true)}
       onMouseLeave={() => setMouseOver(() => false)}
-      className="flex cursor-pointer flex-col items-center rounded-lg border-2 border-teal-300 bg-white text-center shadow-lg shadow-gray-200 transition-transform duration-[350ms] hover:scale-105 md:w-5/12"
+      className="relative flex cursor-pointer flex-col items-center justify-between rounded-lg border-2 border-teal-300 bg-white text-center shadow-lg shadow-gray-200 transition-transform duration-[350ms] hover:scale-105 md:w-5/12"
     >
       <div className="w-full rounded-lg border-b-2 border-teal-300 p-3">
         <Image
@@ -33,7 +33,7 @@ export default function Card({ title, desc, img, longdesc, stack }: CardProps) {
         </h2>
         <p>{desc}</p>
       </div>
-      <div className="mt-8 w-11/12 pb-4">
+      <div className="bottom-0 mt-8 w-11/12 pb-4">
         <Stack stack={stack} mousedOver={mousedOver} />
       </div>
     </div>

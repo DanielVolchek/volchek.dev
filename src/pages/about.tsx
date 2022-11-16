@@ -34,9 +34,16 @@ const About: NextPage = ({}) => {
                           right? I don&apos;t think you&apos;d be here if you
                           didn&apos;t
                           <br />
-                          Well first off, I&apos;m much more than just my
-                          terminal. When I&apos;m not coding, I love to try new
-                          things. Lately, I&apos;ve been learning to rock climb.
+                        </>
+                      }
+                    />
+                    <Section
+                      header={<>I&apos;m much more than just my terminal</>}
+                      headerClasses="text-2xl"
+                      p={
+                        <>
+                          When I&apos;m not coding, I love to try new things.
+                          Lately, I&apos;ve been learning to rock climb.
                           I&apos;m starting off slowly, but hopefully this time
                           next year I&apos;ll be scaling mountains! I love the
                           outdoors, and if it wasn&apos;t for my other love
@@ -97,9 +104,10 @@ const About: NextPage = ({}) => {
                   I&apos;m a software engineer, leaning towards
                   frontend/fullstack development. I love the technical challenge
                   of solving logical problems, and I don&apos;t mind working
-                  behind the scenes to get everything working just right. Still,
-                  I enjoy building functional websites with react and tailwind
-                  quite a bit. Thus, fullstack.
+                  behind the scenes to get everything working just right. I also
+                  quite enjoy putting the puzzle pieces together, with a
+                  satisfing visual representation. React and Tailwind are my
+                  preferred frontend tools. Thus, fullstack.
                 </>
               }
             />
