@@ -18,7 +18,7 @@ const BlogPost: NextPage<Props> = ({ post, markdown }) => {
         <title>{`${post.title} - Volchek.Dev`}</title>
       </Head>
       <article
-        className="prose"
+        className="prose max-w-none"
         dangerouslySetInnerHTML={{ __html: markdown.toString() }}
       ></article>
     </>

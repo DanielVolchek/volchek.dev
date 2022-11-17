@@ -1,6 +1,7 @@
 import { unified } from "unified";
 import { read } from "to-vfile";
 import remarkParse from "remark-parse";
+import remarkPrism from "remark-prism";
 import remarkRehype from "remark-rehype";
 import rehypeRaw from "rehype-raw";
 import rehypeSanitize from "rehype-sanitize";
