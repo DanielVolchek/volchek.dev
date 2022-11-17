@@ -39,7 +39,7 @@ This'll be very easy. My initial thoughts were to use the Github API to get the 
 
 ##### This block is the only one that matters to us
 
-```
+```python
 req = urllib.request.Request(
     'https://tailwindcss.com/docs',
     data=None,
@@ -73,7 +73,7 @@ for url in sorted(set(links)):
 
 This is a few lines of the results we get from running this script:
 
-```
+```json
   {
     "topic": "Word Break",
     "slug": "word-break"
@@ -92,7 +92,7 @@ Let's modify the result further to fit into our lua script
 
 The format we'll need for our data looks something like this
 
-```
+```json
 {
   {
     "topic1", "slug1"
@@ -105,7 +105,7 @@ The format we'll need for our data looks something like this
 
 This won't be dificult to recreate at all.
 
-```
+```python
 parsedPages = []
 for page in pages:
     parsedPages.append('{"%s", "%s"}' % (page["topic"], page["slug"]))
@@ -136,13 +136,6 @@ Well, that was easy. Let's move on
 We've already got our list, thanks to the build script. Let's now incorporate them within Telescope
 
 Our code is short and sweet, let's take a look
-
-```javascript
-const func = () => {
-  console.log("hello world");
-};
-func();
-```
 
 ```lua
 local pickers = require("telescope.pickers")

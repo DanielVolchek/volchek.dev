@@ -9,8 +9,6 @@ import Head from "next/head";
 import parseMarkdown from "../../lib/parsemarkdown";
 import * as path from "path";
 import { fetchAllPostData, fetchPostData, postsDir } from "../../lib/fetchpost";
-import { useEffect, useState } from "react";
-import { serialize, deserialize } from "react-serialize";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 const BlogPost: NextPage<Props> = ({ post, markdown }) => {
@@ -21,7 +19,7 @@ const BlogPost: NextPage<Props> = ({ post, markdown }) => {
       </Head>
       <article
         className="prose max-w-none"
-        dangerouslySetInnerHTML={{ __html: markdown }}
+        dangerouslySetInnerHTML={{ __html: markdown.toString() }}
       ></article>
     </>
   );
@@ -41,7 +39,7 @@ export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
   return {
     props: {
       post,
-      markdown: result.result,
+      markdown: result.value,
     },
   };
 };
