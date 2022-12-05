@@ -1,10 +1,13 @@
+import g from "glob";
 import type { InferGetStaticPropsType, NextPage } from "next";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import PostInfo from "../../components/postinfo";
 import Head from "next/head";
 import type { Post } from "../../lib/fetchpost";
+import { postsDir } from "../../lib/fetchpost";
 import { fetchAllPostData } from "../../lib/fetchpost";
 import Filters from "../../components/filters";
+import path from "path";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -78,7 +81,24 @@ const Blog: NextPage<Props> = ({ data, tags }) => {
 };
 
 export const getStaticProps = async () => {
+  const pages = g.sync(path.join(postsDir, "*.md"));
+
+  if (!pages) return { paths: [], fallback: false };
+  if (new Set(pages).size !== pages.length)
+    throw new Error("Duplicate slugs found in posts");
+
   const data = fetchAllPostData();
+
+  const ids = data.map((data) => data.id);
+  if (new Set(ids).size !== ids.length)
+    throw new Error("Duplicate ids found in posts.json");
+
+  pages.forEach((page) => {
+    const slug = page.split("/").pop()?.replace(".md", "");
+    if (!data.find((data) => data.slug === slug))
+      throw new Error(`No post found in posts.json for ${slug}`);
+  });
+
   const tags = new Set(data.map((post) => post.tags).flat());
   return {
     props: {
