@@ -3,7 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Section from "../components/section";
 import Link from "../components/link";
-import me from "../images/metemp.png";
+import me from "../images/stock.webp";
 
 const About: NextPage = ({}) => {
   return (
@@ -60,34 +60,11 @@ const About: NextPage = ({}) => {
                           about how my computer worked, what caused this to do
                           that, and how I could do it myself. It didn&apos;t
                           take long before I knew I wanted to be a programmer.
-                          The much harder question was what type of programming
-                          I wanted to do.
                         </>
                       }
                     />
                   </div>
                 </div>
-                <Section
-                  header="What are your goals?"
-                  p={
-                    <>
-                      Right now, the goal is to find a job where I can prove
-                      myself. I&apos;ve put in the time and work to become a
-                      proficient developer. I&apos;m aware that I&apos;m
-                      talented, and yet I&apos;m aware of how little I know.
-                      When I get my first role as a junior developer, I&apos;ll
-                      take it as an opportunity to show my chops, and to learn
-                      and absorb as much as I can.
-                      <br />
-                      The only place I can go from there is up. My goal in the
-                      next 5 years is to become a senior developer. I&apos;m
-                      confident I&apos;ll be able to do it. The longest term of
-                      my goals is to eventually become a CTO of a startup that
-                      leaves a positive impact on the world. I&apos;ll settle
-                      for nothing less.
-                    </>
-                  }
-                />
               </article>
             </div>
           </section>
@@ -104,10 +81,10 @@ const About: NextPage = ({}) => {
                   I&apos;m a software engineer, leaning towards
                   frontend/fullstack development. I love the technical challenge
                   of solving logical problems, and I don&apos;t mind working
-                  behind the scenes to get everything working just right. I also
-                  quite enjoy putting the puzzle pieces together, with a
-                  satisfing visual representation. React and Tailwind are my
-                  preferred frontend tools. Thus, fullstack.
+                  behind the scenes to get everything functioning just right. I
+                  also enjoy putting the puzzle pieces together, with a
+                  satisfing visual representation. ReactJS and TailwindCSS are
+                  my preferred frontend tools. Thus, fullstack.
                 </>
               }
             />

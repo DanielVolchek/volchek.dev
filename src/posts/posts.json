@@ -6,5 +6,13 @@
     "slug": "hello-tailiscope",
     "date": "11/16/2022",
     "id": 0
+  },
+  {
+    "title": "Example Post",
+    "desc": "Test post for filters",
+    "tags": ["programming", "test"],
+    "slug": "example-post",
+    "date": "11/16/2022",
+    "id": 1
   }
 ]

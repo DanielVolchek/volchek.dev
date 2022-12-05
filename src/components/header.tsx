@@ -2,7 +2,7 @@ import Link from "./link";
 import { breakpoints } from "../layouts/base";
 
 export default function Header() {
-  const navstyles = `text-2xl !text-black hover:!text-indigo-600`;
+  const navstyles = `text-2xl !text-black hover:!text-teal-300`;
   return (
     <header className="relative flex justify-center py-4">
       <nav className={`flex w-full justify-between px-4 ${breakpoints}`}>
