@@ -7,3 +7,21 @@ body {
   color: #fff;
   font-family: "Times New Roman", Times, serif, Arial, sans-serif !important;
 }
+
+.typewriter {
+  font-family: monospace;
+  display: inline-block;
+}
+
+.cursor {
+  display: inline-block;
+  width: 1px;
+  background-color: black;
+  animation: blink 0.7s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}

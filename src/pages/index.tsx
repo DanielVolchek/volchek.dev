@@ -1,8 +1,6 @@
 import Link from "next/link";
 import { FileText, Github, Linkedin, Mail } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
-import { on } from "events";
-import { start } from "repl";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   return (
@@ -56,13 +54,11 @@ const words = [
   "beautiful",
   "jawdropping",
   "unique",
-  "awe-inspiring",
+  "inspiring",
   "creative",
   "contemporary",
   "breathtaking",
 ];
-
-const TIME = 300;
 
 const Typewriter = () => {
   const [displayText, setDisplayText] = useState("");
@@ -78,18 +74,20 @@ const Typewriter = () => {
       if (displayText.length > 0) {
         timer = setTimeout(() => {
           setDisplayText(currentWord.substring(0, displayText.length - 1));
-        }, 50);
+        }, 75);
       } else {
         // Move to the next word
-        setIsDeleting(false);
-        setWordIndex((prevIndex) => (prevIndex + 1) % words.length);
+        setTimeout(() => {
+          setIsDeleting(false);
+          setWordIndex((prevIndex) => (prevIndex + 1) % words.length);
+        }, 300);
       }
     } else {
       // Typing state
       if (displayText.length < currentWord.length) {
         timer = setTimeout(() => {
           setDisplayText(currentWord.substring(0, displayText.length + 1));
-        }, 50);
+        }, 75);
       } else {
         // Pause before deleting
         timer = setTimeout(() => {
