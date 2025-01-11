@@ -66,8 +66,8 @@ const Typewriter = () => {
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
-    const currentWord = words[wordIndex];
-    let timer;
+    const currentWord = words[wordIndex]!;
+    let timer: NodeJS.Timeout;
 
     if (isDeleting) {
       // Deleting state
