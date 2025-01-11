@@ -1,82 +1,110 @@
-import type { NextPage } from "next";
-import Head from "next/head";
-import Link from "../components/link";
-import Projects from "../components/projects";
-import Section from "../components/section";
+import Link from "next/link";
+import { FileText, Github, Linkedin, Mail } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { on } from "events";
+import { start } from "repl";
 
-const Home: NextPage = () => {
+export default function Home() {
   return (
-    <>
-      <Head>
-        <title>Home - Volchek.Dev</title>
-      </Head>
-      <h1 className="my-2 text-5xl font-semibold md:text-4xl">Hey!👋</h1>
-      <h2 className="text-2xl">What&apos;s the deal???</h2>
-      <article className="pl-4">
-        <Section
-          header={
-            <>
-              I&apos;m{" "}
-              <Link href="/about" content="Daniel" className="underline" /> :)
-              This is my blog
-            </>
-          }
-          p={
-            <>
-              I&apos;m learning to be a developer. I&apos;m still figuring out
-              what field I want to be in. This website will be a bit like a
-              journal of that. It&apos;s mostly gonna be me putting my thoughts
-              out on paper and documenting my journey. Every once in a while
-              I&apos;m sure I&apos;ll do something interesting! If you want to
-              follow along, head on over{" "}
-              <Link className="underline" href="/blog" content="here" />
-            </>
-          }
-        />
-      </article>
-      <h2 className="text-2xl">What kind of stuff have you worked on?</h2>
-      <article className="pl-4">
-        <Section
-          header={<>I&apos;m always working on something new</>}
-          p={
-            <>
-              Right now my current project (which you can follow right{" "}
-              <Link href="/blog" content="here!" className="underline" />) is
-              building a simple text editor in Rust, which I&apos;ll continue to
-              upgrade over time with modal editing, LSP support, and much more.
-              I can&apos;t wait to get started!
-            </>
-          }
-        />
-      </article>
+    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-gray-900 to-gray-800 p-4 text-white">
+      <div className="max-w-2xl text-center">
+        <h1 className="mb-4 text-4xl font-bold">Portfolio Under Development</h1>
+        <p className="mb-8 text-xl">
+          I&apos;m currently working on something <Typewriter />. Stay tuned!
+        </p>
+        <div className="flex justify-center space-x-6">
+          <Link
+            href="https://github.com/danielvolchek"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-colors hover:text-gray-300"
+          >
+            <Github size={32} />
+            <span className="sr-only">GitHub</span>
+          </Link>
+          <Link
+            href="https://linkedin.com/in/danielvolchek"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-colors hover:text-gray-300"
+          >
+            <Linkedin size={32} />
+            <span className="sr-only">LinkedIn</span>
+          </Link>
+          <Link
+            href="mailto:daniel@volchek.dev"
+            className="transition-colors hover:text-gray-300"
+          >
+            <Mail size={32} />
+            <span className="sr-only">Email</span>
+          </Link>
+          <Link
+            href="/resume.pdf"
+            className="transition-colors hover:text-gray-300"
+          >
+            <FileText size={32} />
+            <span className="sr-only">Resume</span>
+          </Link>
+        </div>
+      </div>
+    </main>
+  );
+}
 
-      <section className="my-2">
-        <h2 className="my-2 text-2xl font-medium"></h2>
-        <p className="my-2 text-lg"></p>
-      </section>
-      <article className="my-2">
-        <h2 className="pl-4 text-xl">I&apos;ve made some stuff already</h2>
-        <Projects />
-      </article>
-      <h2 className="text-2xl font-medium">Wanna get in contact?</h2>
-      <article className="my-2 pl-4">
-        <Section
-          header={"Email me!"}
-          p={
-            <>
-              I&apos;d love to hear from you! If you have any feedback, wanna
-              collaborate, or just wanna chat... shoot me an email over{" "}
-              <Link
-                href="mailto:daniel@volchek.dev?subject=Hi!"
-                content="here!"
-                className="underline"
-              />
-            </>
-          }
-        />
-      </article>
-    </>
+const words = [
+  "awesome",
+  "beautiful",
+  "jawdropping",
+  "unique",
+  "awe-inspiring",
+  "creative",
+  "contemporary",
+  "breathtaking",
+];
+
+const TIME = 300;
+
+const Typewriter = () => {
+  const [displayText, setDisplayText] = useState("");
+  const [wordIndex, setWordIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const currentWord = words[wordIndex];
+    let timer;
+
+    if (isDeleting) {
+      // Deleting state
+      if (displayText.length > 0) {
+        timer = setTimeout(() => {
+          setDisplayText(currentWord.substring(0, displayText.length - 1));
+        }, 50);
+      } else {
+        // Move to the next word
+        setIsDeleting(false);
+        setWordIndex((prevIndex) => (prevIndex + 1) % words.length);
+      }
+    } else {
+      // Typing state
+      if (displayText.length < currentWord.length) {
+        timer = setTimeout(() => {
+          setDisplayText(currentWord.substring(0, displayText.length + 1));
+        }, 50);
+      } else {
+        // Pause before deleting
+        timer = setTimeout(() => {
+          setIsDeleting(true);
+        }, 300);
+      }
+    }
+
+    return () => clearTimeout(timer);
+  }, [displayText, isDeleting, wordIndex]);
+
+  return (
+    <span className="typewriter">
+      {displayText}
+      <span className="cursor">|</span>
+    </span>
   );
 };
-
-export default Home;
