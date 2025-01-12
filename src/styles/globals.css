@@ -15,8 +15,9 @@ body {
 
 .cursor {
   display: inline-block;
-  width: 1px;
-  background-color: black;
+  width: 2px;
+  height: 1em;
+  background-color: white;
   animation: blink 0.7s steps(1) infinite;
 }
 

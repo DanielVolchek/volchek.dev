@@ -61,7 +61,7 @@ const words = [
 ];
 
 const Typewriter = () => {
-  const [displayText, setDisplayText] = useState("");
+  const [displayText, setDisplayText] = useState(words[0]!);
   const [wordIndex, setWordIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
@@ -102,7 +102,7 @@ const Typewriter = () => {
   return (
     <span className="typewriter">
       {displayText}
-      <span className="cursor">|</span>
+      <span className="cursor"></span>
     </span>
   );
 };
