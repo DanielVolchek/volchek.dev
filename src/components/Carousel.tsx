@@ -1,16 +1,11 @@
 "use client";
+import useEmblaCarousel from "embla-carousel-react";
 import { FC, ReactNode, useMemo } from "react";
 
 type PropsType = {
   items: ReactNode[];
   showArrows?: boolean;
 };
-
-/**
- * <Carousel>
- *
- * </Carousel>
- */
 
 export const Carousel: FC<PropsType> = (props) => {
   const { items, showArrows = true } = props;
@@ -28,7 +23,7 @@ export const CarouselItem: FC<CarouselItemProps> = (props) => {
 
   const titleComponent =
     typeof title === "string" ? (
-      <h2 className="text-4xl inline-block">{title}</h2>
+      <h2 className="mb-3 mt-1 inline-block text-center text-8xl">{title}</h2>
     ) : (
       title
     );
@@ -37,7 +32,7 @@ export const CarouselItem: FC<CarouselItemProps> = (props) => {
     <div itemID="carouselItem" className="relative">
       <HoverBoundary />
       {titleComponent}
-      <section className="border border-red-200 p-2 aspect-square flex flex-col items-center justify-center">
+      <section className="flex w-[calc(100%+10rem)] flex-col items-center justify-center border border-red-200 p-2">
         {content}
       </section>
       <button>{buttonText}</button>
@@ -57,8 +52,44 @@ const HoverBoundary: FC = () => {
     <div
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      className="p-8 box-content absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full"
+      className="absolute left-1/2 top-1/2 box-content h-full w-full -translate-x-1/2 -translate-y-1/2 p-8"
       itemID="hoverBoundary"
     />
   );
 };
+
+// TODO remove embla package
+export const EmblaCarousel = () => {
+  const [emblaRef] = useEmblaCarousel();
+
+  return (
+    <div className="embla" ref={emblaRef}>
+      <div className="embla__container">
+        <div className="embla__slide">Slide 1</div>
+        <div className="embla__slide">Slide 2</div>
+        <div className="embla__slide">Slide 3</div>
+      </div>
+    </div>
+  );
+};
+
+const Developer = () => {
+  return (
+    <CarouselItem
+      title={"Developer"}
+      content={<DeveloperImage />}
+      buttonText={"See More"}
+    />
+  );
+};
+
+const DeveloperImage = () => {
+  return (
+    <img
+      src="https://www.simplilearn.com/ice9/free_resources_article_thumb/tester-or-developer-what-suits-you-the-most.jpg"
+      className="object-cover"
+    />
+  );
+};
+
+const CarouselItems = [<Developer key={0} />];
