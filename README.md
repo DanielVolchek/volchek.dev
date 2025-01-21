@@ -1,29 +1,36 @@
-# Volchek.Dev blog
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## What is it?
+## Getting Started
 
-This is a simple blog I put together so I can write about my programming activities and better contentualize them in my own head. If it happens to help anyone, that's an awesome side effect!
+First, run the development server:
 
-## Can I host it myself?
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-This type of blog is very easy to self-host. All you really have to do is fork it, edit the content as you please, and throw it up on Vercel. Feel free to do so if you'd like!
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## What tech did you use to make this?
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-I bootstrapped this using [create-t3-app](https://github.com/t3-oss/create-t3-app), but mostly just for a quick tailwind & ts project. The stack as of now is as follows
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-- NextJS (framework)
-- Tailwind CSS (styling)
-- Remark (parsing markdown)
-  - Unified
-  - remark-parse
-  - remark-rehype
-  - rehype-parse
-  - rehype-raw
-  - rehype-sanitize
-  - rehype-stringify
-- Zod (typechecking JSON)
+## Learn More
 
-## What's the link to the site?
+To learn more about Next.js, take a look at the following resources:
 
-[Right here](https://volchek.dev)
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
