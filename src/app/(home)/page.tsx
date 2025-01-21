@@ -1,4 +1,5 @@
 import { Carousel, CarouselItem } from "@/components/Carousel";
+import { Typewriter } from "@/components/Typewriter";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -13,7 +14,8 @@ export default function Home() {
         <h1 className="text-4xl">
           Hi, I'm Daniel Volchek,
           <br />
-          I'm a...
+          I'm a
+          <Typewriter />
         </h1>
       </div>
     </div>
