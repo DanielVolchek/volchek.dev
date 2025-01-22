@@ -39,17 +39,19 @@ type CustomProps = {
 };
 
 const CustomNavLink: ComponentWrapper<typeof Link, CustomProps> = (props) => {
-  const { currentPage, color, ...rest } = props;
+  const { currentPage, color, className, ...rest } = props;
+
+  const defaultClasses = "text-xl hover:text-gray-400 pb-[2px]";
 
   if (currentPage) {
     return (
       <Link
         {...rest}
-        className="underline"
-        style={{ color, textDecorationColor: color }}
+        className={`underline ${defaultClasses} ${className} underline-offset-8`}
+        style={{ textDecorationColor: color }}
       />
     );
   }
 
-  return <Link {...rest} className="" />;
+  return <Link {...rest} className={`${defaultClasses} ${className} `} />;
 };

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "../css/globals.css";
-import "../css/embla.css";
 import { Navbar } from "@/components/navbar";
 
 export const metadata: Metadata = {
@@ -15,11 +14,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="">
+      <body className="mx-auto max-w-[750px]">
         <Navbar />
-        <main className="flex flex-col items-center justify-center px-4">
-          {children}
-        </main>
+        {children}
       </body>
     </html>
   );

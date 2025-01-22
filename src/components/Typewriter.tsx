@@ -1,16 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 
-const words = [
-  "awesome",
-  "beautiful",
-  "jawdropping",
-  "unique",
-  "inspiring",
-  "creative",
-  "contemporary",
-  "breathtaking",
-];
+const words = ["developer", "blogger", "neovim fanatic", "dreamer"];
 
 export const Typewriter = () => {
   const [displayText, setDisplayText] = useState(words[0]);
@@ -52,9 +43,9 @@ export const Typewriter = () => {
   }, [displayText, isDeleting, wordIndex]);
 
   return (
-    <span className="typewriter mx-2">
+    <span className="mx-4">
       {displayText}
-      <span className="cursor"></span>
+      <span className="blink ml-1 inline-block h-[1em] w-2 bg-white"></span>
     </span>
   );
 };

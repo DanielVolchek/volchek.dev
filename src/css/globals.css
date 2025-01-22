@@ -4,5 +4,18 @@
 
 body {
   color: #fff;
-  background-color: #242424;
+  background-color: #121212;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.blink {
+  animation: blink 1s step-start infinite;
 }
