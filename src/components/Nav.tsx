@@ -41,7 +41,7 @@ type CustomProps = {
 const CustomNavLink: ComponentWrapper<typeof Link, CustomProps> = (props) => {
   const { currentPage, color, className, ...rest } = props;
 
-  const defaultClasses = "text-xl hover:text-gray-400 pb-[2px]";
+  const defaultClasses = "text-3xl pb-[2px]";
 
   if (currentPage) {
     return (
@@ -53,5 +53,10 @@ const CustomNavLink: ComponentWrapper<typeof Link, CustomProps> = (props) => {
     );
   }
 
-  return <Link {...rest} className={`${defaultClasses} ${className} `} />;
+  return (
+    <Link
+      {...rest}
+      className={`${defaultClasses} ${className} hover:bg-gray-400/50`}
+    />
+  );
 };
