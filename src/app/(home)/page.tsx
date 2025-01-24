@@ -1,50 +1,38 @@
+// TODO
+// Move waitInputMS and applyClassToList and LoadOutLink to seperate files
+// Add custom property transitionOnEntry to elements you want to be transitioned out (or just use class fade-in-element)
+// Switch from grabbing elements from ref to grabbing elements by that with document selector
+// Add load in code to layout
+//
+// Set main page color by setting a css var on each page when loading it
+// Then get color when needed with var or using inherit
+
 "use client";
 
-import { FC, ReactNode, useEffect, useRef } from "react";
+import { IconGroup } from "@/components/IconGroup";
+import { LoadOutLink } from "@/components/LoadOutLink";
+import { ArrowRight } from "lucide-react";
 
-const waitInputMS = async (number = 100) => {
-  return new Promise<void>((resolve) => {
-    setTimeout(() => {
-      resolve();
-    }, number);
-  });
-};
-
-const applyClassToGroup = async (children: HTMLCollection) => {
-  for (const child of children) {
-    child.classList.add("visible");
-    await waitInputMS();
-  }
-};
+import { FC, ReactNode } from "react";
 
 export default function Home() {
-  const mainRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!mainRef.current) {
-      return;
-    }
-
-    const children = mainRef.current.children;
-    applyClassToGroup(children);
-  }, []);
-
   return (
-    <main ref={mainRef} className="flex flex-col gap-8">
+    <main className="flex flex-col gap-8">
       <Group
         header={"Daniel Volchek"}
-        subheader={"Front-end platform engineer"}
+        subheader={"Front-End Developer. Minimalist. Dreamer"}
         content={
-          <p>
-            Front-End developer focused on scalable, maintainable code.
-            Passionate about developer experience.
-          </p>
+          <div>
+            <IconGroup size="sm" />
+          </div>
         }
       />
 
       <Group
         header={"Work Experience"}
-        subheader={"See what I've worked on"}
+        subheader={
+          <LoadOutLink href="/work">See where I've worked</LoadOutLink>
+        }
         content={undefined}
       />
       <Group
@@ -84,18 +72,118 @@ const Group: FC<GroupProps> = (props) => {
   );
 };
 
+const Header: FC<{ children: ReactNode }> = (props) => {
+  const { children } = props;
+
+  return <h2 className="text-2xl md:text-4xl">{children}</h2>;
+};
+
 const Subheader: FC<{ children: ReactNode }> = (props) => {
   const { children } = props;
 
   return (
-    <p className="text-3xl italic text-gray-400 transition-transform duration-75 hover:-translate-y-1 hover:underline">
-      {children}
+    <p className="font-mono text-lg italic text-gray-400 transition-transform duration-75 hover:-translate-y-1 hover:underline md:text-xl">
+      <span className="flex items-center">
+        {children}
+        <ArrowRight />
+      </span>
     </p>
   );
 };
 
-const Header: FC<{ children: ReactNode }> = (props) => {
-  const { children } = props;
+// (
+//     <div className="flex gap-4">
+//       <Link
+//         href="https://github.com/danielvolchek"
+//         target="_blank"
+//         rel="noopener noreferrer"
+//         className="transition-colors hover:text-gray-300"
+//       >
+//         <Github size={32} />
+//         <span className="sr-only">GitHub</span>
+//       </Link>
+//       <Link
+//         href="https://linkedin.com/in/danielvolchek"
+//         target="_blank"
+//         rel="noopener noreferrer"
+//         className="transition-colors hover:text-gray-300"
+//       >
+//         <Linkedin size={32} />
+//         <span className="sr-only">LinkedIn</span>
+//       </Link>
+//       <Link
+//         href="mailto:daniel@volchek.dev"
+//         className="transition-colors hover:text-gray-300"
+//       >
+//         <Mail size={32} />
+//         <span className="sr-only">Email</span>
+//       </Link>
+//       <Link
+//         href="/resume.pdf"
+//         className="transition-colors hover:text-gray-300"
+//       >
+//         <FileText size={32} />
+//         <span className="sr-only">Resume</span>
+//       </Link>
+//     </div>
+//   )//       </Link>
+//     </div>
+//   )//   )//   )//   )//   )//   )//   )//   )
 
-  return <h2 className="text-5xl">{children}</h2>;
-};
+// const SubHeaderAnimation: FC<SubHeaderAnimationProps> = (props) => {
+//   const { text, timeInMs = 2000 } = props;
+//
+//   const [currentText, setCurrentText] = useState(text[0]);
+//   const [currentTextIndex, setCurrentTextIndex] = useState(0);
+//
+//   const pRef = useRef<HTMLDivElement>(null);
+//
+//   const [isVisible, setIsVisible] = useState(false);
+//
+//   const cycleToNextWord = useCallback(() => {
+//     setIsVisible(() => false);
+//     const nextIndex = (currentTextIndex + 1) % text.length;
+//     setCurrentText(text[nextIndex]);
+//     setCurrentTextIndex(nextIndex);
+//   }, [
+//     setIsVisible,
+//     text,
+//     setCurrentText,
+//     currentTextIndex,
+//     setCurrentTextIndex,
+//   ]);
+//
+//   useEffect(() => {
+//     const interval = setInterval(() => {
+//       cycleToNextWord();
+//     }, timeInMs);
+//
+//     return () => clearInterval(interval);
+//   }, [timeInMs, cycleToNextWord]);
+//
+//   useEffect(() => {
+//     setTimeout(() => setIsVisible(true), 1000);
+//   }, [currentText]);
+//
+//   return (
+//     <span
+//       ref={pRef}
+//       className={`${isVisible ? "opacity-100" : "opacity-0"} transition-opacity`}
+//     >
+//       {currentText}
+//     </span>
+//   );
+// };//       className={`${isVisible ? "opacity-100" : "opacity-0"} transition-opacity`}
+//     >
+//       {currentText}
+//     </span>
+//   );
+// };// };// };// };// };// };// };// };//   );
+// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };//   );
+// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };//   );
+// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };//   );
+// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };//   );
+// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };//   );
+// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };//   );
+// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };//   );
+// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };

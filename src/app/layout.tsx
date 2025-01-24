@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "../css/globals.css";
 import { Navbar } from "@/components/navbar";
+import { PageUpdateContext } from "@/lib/context/PageUpdateContext";
 
 export const metadata: Metadata = {
   title: "Volchek.Dev",
@@ -15,8 +16,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="mx-auto w-[95%]">
-        <Navbar />
-        {children}
+        <PageUpdateContext>
+          <Navbar />
+          {children}
+        </PageUpdateContext>
       </body>
     </html>
   );

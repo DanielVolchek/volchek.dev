@@ -1,34 +1,47 @@
 "use client";
 
+import { BasePathTemplate, pages, usePathInfo } from "@/lib/hooks/usePathInfo";
+import { IconGroup } from "./IconGroup";
+
 import { ComponentWrapper } from "@/lib/types";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-type href = `/${string}`;
-const pages: { [key: href]: { title: string; color: string } } = {
-  "/": { title: "Home", color: "#ff0000" },
-  "/work": { title: "Work", color: "#00ff00" },
-  "/blog": { title: "Blog", color: "#0000ff" },
-};
+import { LoadOutLink } from "./LoadOutLink";
+import { useEffect, useState } from "react";
 
-// TODO add code to handle "/blog/x" as is "/blog" will be marked as current page but "/blog/x" won't
 export const Nav = () => {
-  const pathname = usePathname();
+  const pathInfo = usePathInfo();
+  const [optimisticCurrentPage, setOptimisticCurrentPage] = useState(
+    pathInfo.basePath,
+  );
+
+  useEffect(() => {
+    setOptimisticCurrentPage(pathInfo.basePath);
+  }, [pathInfo.basePath]);
+
+  const onClick = (basePath: BasePathTemplate) => {
+    setOptimisticCurrentPage(basePath);
+  };
+
+  // TODO decide if you want to automatically show the change
 
   return (
-    <nav className="flex gap-2">
-      {Object.entries(pages).map(([href, page], i) => {
-        return (
-          <CustomNavLink
-            currentPage={pathname === href}
-            key={i}
-            href={href}
-            color={page.color}
-          >
-            {page.title}
-          </CustomNavLink>
-        );
-      })}
+    <nav className="flex flex-col gap-2">
+      <div className="flex items-center gap-2">
+        {Object.entries(pages).map(([href, page], i) => {
+          return (
+            <CustomNavLink
+              currentPage={optimisticCurrentPage === href}
+              onClick={() => onClick(href as BasePathTemplate)}
+              key={i}
+              href={href}
+              color={page.color}
+            >
+              {page.title}
+            </CustomNavLink>
+          );
+        })}
+      </div>
     </nav>
   );
 };
@@ -38,25 +51,25 @@ type CustomProps = {
   color: string;
 };
 
-const CustomNavLink: ComponentWrapper<typeof Link, CustomProps> = (props) => {
-  const { currentPage, color, className, ...rest } = props;
-
-  const defaultClasses = "text-3xl pb-[2px]";
-
-  if (currentPage) {
-    return (
-      <Link
-        {...rest}
-        className={`underline ${defaultClasses} ${className} underline-offset-8`}
-        style={{ textDecorationColor: color }}
-      />
-    );
-  }
+const CustomNavLink: ComponentWrapper<typeof LoadOutLink, CustomProps> = (
+  props,
+) => {
+  const { onClick, currentPage, color, className, ...rest } = props;
 
   return (
-    <Link
+    <LoadOutLink
       {...rest}
-      className={`${defaultClasses} ${className} hover:bg-gray-400/50`}
+      onClick={onClick}
+      className={`rounded-sm px-2 py-1 text-base transition-all duration-300 hover:bg-gray-400/50 ${className} ${currentPage ? "!text-2xl text-white" : "hover:scale-125"}`}
+      style={
+        currentPage
+          ? {
+              textDecorationColor: color,
+              textShadow: `0px 0px 3px ${color}, 0px 0px 2px #fff`,
+              color: `${color}`,
+            }
+          : undefined
+      }
     />
   );
 };
