@@ -1,7 +1,7 @@
 // Custom hook to set properties of different pages
 
 import { useRouter } from "next/navigation";
-import { useCallback, useEffect, useLayoutEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { useReducedMotion } from "./useReducedMotion";
 import { applyClassToList, waitInputMS } from "../utils";
 import { usePathInfo } from "./usePathInfo";
@@ -72,7 +72,6 @@ export const usePageUpdate = () => {
       className: "visible",
       remove: true,
       wait: true,
-      waitMS: 50,
     });
     await waitInputMS(25);
   };

@@ -1,10 +1,8 @@
 "use client";
 
 import { BasePathTemplate, pages, usePathInfo } from "@/lib/hooks/usePathInfo";
-import { IconGroup } from "./IconGroup";
 
 import { ComponentWrapper } from "@/lib/types";
-import { usePathname } from "next/navigation";
 
 import { LoadOutLink } from "./LoadOutLink";
 import { useEffect, useState } from "react";
@@ -60,12 +58,12 @@ const CustomNavLink: ComponentWrapper<typeof LoadOutLink, CustomProps> = (
     <LoadOutLink
       {...rest}
       onClick={onClick}
-      className={`rounded-sm px-2 py-1 text-base transition-all duration-300 hover:bg-gray-400/50 ${className} ${currentPage ? "!text-2xl text-white" : "hover:scale-125"}`}
+      className={`px-2 py-1 text-lg transition-all duration-300 ${className} ${currentPage ? "!text-2xl text-white" : "hover:scale-125"}`}
       style={
         currentPage
           ? {
               textDecorationColor: color,
-              textShadow: `0px 0px 3px ${color}, 0px 0px 2px #fff`,
+              // textShadow: `0px 0px 3px ${color}, 0px 0px 2px #fff`,
               color: `${color}`,
             }
           : undefined

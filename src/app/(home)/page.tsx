@@ -31,7 +31,7 @@ export default function Home() {
       <Group
         header={"Work Experience"}
         subheader={
-          <LoadOutLink href="/work">See where I've worked</LoadOutLink>
+          <LoadOutLink href="/work">See where I&apos;ve worked</LoadOutLink>
         }
         content={undefined}
       />

@@ -1,16 +1,15 @@
 import { usePathname, useSearchParams } from "next/navigation";
-import colors from "tailwindcss/colors";
 
 export type BasePathTemplate = `/${string}`;
 export const pages: {
   [key: BasePathTemplate]: { title: string; color: string };
 } = {
-  "/": { title: "Home", color: "#ff0000" },
-  "/work": { title: "Work", color: "#00ff00" },
-  "/projects": { title: "Projects", color: "#0000ff" },
-  "/blog": { title: "Blog", color: "#0000ff" },
-  "/contact": { title: "Contact", color: "#0000ff" },
-  "/about": { title: "About", color: "#0000ff" },
+  "/": { title: "Home", color: "hsl(0,100%,70%)" },
+  "/work": { title: "Work", color: "hsl(0,100%,70%)" },
+  "/projects": { title: "Projects", color: "hsl(0,100%,70%)" },
+  "/blog": { title: "Blog", color: "hsl(0,100%,70%)" },
+  "/contact": { title: "Contact", color: "hsl(0,100%,70%)" },
+  "/about": { title: "About", color: "hsl(0,100%,70%)" },
 };
 
 const getBasePath = (pathname: string): BasePathTemplate =>

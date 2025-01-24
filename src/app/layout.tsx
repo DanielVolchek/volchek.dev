@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "../css/globals.css";
 import { Navbar } from "@/components/navbar";
 import { PageUpdateContext } from "@/lib/context/PageUpdateContext";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Volchek.Dev",
@@ -16,10 +17,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="mx-auto w-[95%]">
-        <PageUpdateContext>
-          <Navbar />
-          {children}
-        </PageUpdateContext>
+        <Suspense>
+          <PageUpdateContext>
+            <Navbar />
+            {children}
+          </PageUpdateContext>
+        </Suspense>
       </body>
     </html>
   );
