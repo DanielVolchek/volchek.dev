@@ -6,12 +6,15 @@
 //
 // Set main page color by setting a css var on each page when loading it
 // Then get color when needed with var or using inherit
+//
+// BUG
+// The first load of a page doesn't apply the transition effects
 
 "use client";
 
 import { IconGroup } from "@/components/IconGroup";
 import { LoadOutLink } from "@/components/LoadOutLink";
-import { ArrowRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 
 import { FC, ReactNode } from "react";
 
@@ -22,9 +25,10 @@ export default function Home() {
         header={"Daniel Volchek"}
         subheader={"Front-End Developer. Minimalist. Dreamer"}
         content={
-          <div>
-            <IconGroup size="sm" />
-          </div>
+          <p>
+            I am a Front-End developer, specialized in building scalable React
+            Web-apps.
+          </p>
         }
       />
 
@@ -37,7 +41,9 @@ export default function Home() {
       />
       <Group
         header={"Projects"}
-        subheader={"Check out my projects"}
+        subheader={
+          <LoadOutLink href="/projects">Check out my projects</LoadOutLink>
+        }
         content={undefined}
       />
       <Group
@@ -48,7 +54,11 @@ export default function Home() {
       <Group
         header={"Contact Me"}
         subheader={"Let's work together"}
-        content={undefined}
+        content={
+          <>
+            <IconGroup size="md" />
+          </>
+        }
       />
     </main>
   );
@@ -67,7 +77,7 @@ const Group: FC<GroupProps> = (props) => {
     <div className="fade-in-element">
       <Header>{header}</Header>
       <Subheader>{subheader}</Subheader>
-      <div>{content}</div>
+      <div className="text-gray-400">{content}</div>
     </div>
   );
 };
@@ -82,10 +92,10 @@ const Subheader: FC<{ children: ReactNode }> = (props) => {
   const { children } = props;
 
   return (
-    <p className="font-mono text-lg italic text-gray-400 transition-transform duration-75 hover:-translate-y-1 hover:underline md:text-xl">
-      <span className="flex items-center">
+    <p className="font-mono text-lg text-gray-400 transition-transform duration-75 hover:-translate-y-1 hover:underline md:text-xl">
+      <span className="">
         {children}
-        <ArrowRight />
+        <ChevronRight className="inline" />
       </span>
     </p>
   );
@@ -186,4 +196,7 @@ const Subheader: FC<{ children: ReactNode }> = (props) => {
 // };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };//   );
 // };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };//   );
 // };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };//   );
+// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };//   );
+// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };//   );
+// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };//   );
 // };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };// };

@@ -12,7 +12,7 @@ export const pages: {
   "/about": { title: "About", color: "hsl(0,100%,70%)" },
 };
 
-const getBasePath = (pathname: string): BasePathTemplate =>
+export const getBasePath = (pathname: string): BasePathTemplate =>
   `/${pathname.split("/")[1]}`;
 
 export const usePathInfo = () => {

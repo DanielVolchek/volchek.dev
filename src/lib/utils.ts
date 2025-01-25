@@ -25,7 +25,7 @@ export const applyClassToList = async (options: {
     className,
     remove = false,
     wait = false,
-    waitMS = 125,
+    waitMS = 25,
   } = options;
 
   const waitWrapper = async () => {
@@ -40,11 +40,27 @@ export const applyClassToList = async (options: {
 
   for (const child of group) {
     if (remove) {
-      child.classList.remove(className);
       await waitWrapper();
+      child.classList.remove(className);
     } else {
       await waitWrapper();
       child.classList.add(className);
     }
   }
+};
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const debounce = <T extends (...args: any) => any>(
+  fn: T,
+  wait: number,
+) => {
+  let timeoutId: NodeJS.Timeout | null = null;
+
+  return (...args: Parameters<T>) => {
+    if (timeoutId != null) {
+      clearTimeout(timeoutId);
+    }
+
+    timeoutId = setTimeout(() => fn(...args), wait);
+  };
 };

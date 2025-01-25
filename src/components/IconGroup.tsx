@@ -6,7 +6,7 @@ import Link from "next/link";
 import { FC } from "react";
 
 const SIZE_MAP = {
-  sm: 24,
+  sm: 20,
   md: 30,
   lg: 64,
 } as const;
@@ -21,7 +21,7 @@ const IconLink: ComponentWrapper<typeof Link> = (props) => {
       rel={rest.rel}
       className={cn(
         rest.className,
-        `hover-icon text-gray-300 transition-colors`,
+        `hover-icon text-gray-300 transition-colors hover:text-red-500`,
       )}
     >
       {rest.children}

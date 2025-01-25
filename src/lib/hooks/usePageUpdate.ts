@@ -1,10 +1,15 @@
+// TODO this hook is stupid fix it
+// transitionIn will run as many times as the hook is defined because we call it inside this hook
+// Instead move it out to the context wrapper for the pages
+// navigateOutWithTransition function also does not need to be here, it should instead be in the LoadOutLink component
+//
 // Custom hook to set properties of different pages
 
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect } from "react";
 import { useReducedMotion } from "./useReducedMotion";
 import { applyClassToList, waitInputMS } from "../utils";
-import { usePathInfo } from "./usePathInfo";
+import { getBasePath, usePathInfo } from "./usePathInfo";
 
 // TODO set a fallback color
 const FALLBACK_COLOR = "#fff";
@@ -56,6 +61,10 @@ export const usePageUpdate = () => {
   // Page transition function
   // Runs animation if the user does not prefer reduced animation
   const navigateWithTransition = async (href: string) => {
+    if (getBasePath(href) === path.basePath) {
+      return;
+    }
+
     try {
       if (!prefersReducedMotion) {
         await transitionOut();
