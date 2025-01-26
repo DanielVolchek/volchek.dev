@@ -12,6 +12,7 @@
 
 "use client";
 
+import { CardComponent } from "@/components/CardComponent";
 import { IconGroup } from "@/components/IconGroup";
 import { LoadOutLink } from "@/components/LoadOutLink";
 import { ChevronRight } from "lucide-react";
@@ -37,7 +38,11 @@ export default function Home() {
         subheader={
           <LoadOutLink href="/work">See where I&apos;ve worked</LoadOutLink>
         }
-        content={undefined}
+        content={
+          <div>
+            <CardComponent>this is some text in a card component</CardComponent>
+          </div>
+        }
       />
       <Group
         header={"Projects"}

@@ -21,7 +21,7 @@ const IconLink: ComponentWrapper<typeof Link> = (props) => {
       rel={rest.rel}
       className={cn(
         rest.className,
-        `hover-icon text-gray-300 transition-colors hover:text-red-500`,
+        `hover-icon text-gray-400 transition-colors hover:text-red-500`,
       )}
     >
       {rest.children}

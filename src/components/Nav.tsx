@@ -2,11 +2,12 @@
 
 import { BasePathTemplate, pages, usePathInfo } from "@/lib/hooks/usePathInfo";
 
-import { ComponentWrapper } from "@/lib/types";
-
-import { LoadOutLink } from "./LoadOutLink";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { isElementFullyInViewport } from "@/lib/hooks/useElementInViewport";
+import { NavLink } from "./StyledLink";
+
+// This is an experiment in building a dynamic nav, which can have any number of elements added to it
+// As the elements shrink from the viewport, they are added to an "expand more" list
 
 export const Nav = () => {
   const pathInfo = usePathInfo();
@@ -29,7 +30,7 @@ export const Nav = () => {
   const navEntryElements = useMemo(() => {
     return Object.entries(pages).map(([href, page], i) => {
       return (
-        <CustomNavLink
+        <NavLink
           currentPage={optimisticCurrentPage === href}
           onClick={() => onClick(href as BasePathTemplate)}
           key={i}
@@ -40,7 +41,7 @@ export const Nav = () => {
           }}
         >
           {page.title}
-        </CustomNavLink>
+        </NavLink>
       );
     });
   }, [optimisticCurrentPage]);
@@ -60,30 +61,5 @@ export const Nav = () => {
   );
 };
 
-type CustomProps = {
-  currentPage: boolean;
-};
-
-const CustomNavLink: ComponentWrapper<typeof LoadOutLink, CustomProps> = (
-  props,
-) => {
-  const { onClick, currentPage, className, ...rest } = props;
-
-  return (
-    <LoadOutLink
-      {...rest}
-      onClick={onClick}
-      className={`px-2 py-1 text-base transition-all duration-300 ${className ? className : ""} ${currentPage ? "!text-lg text-red-500" : "hover:text-lg"}`}
-      style={
-        currentPage
-          ? {
-              // textDecorationColor: color,
-              // // textShadow: `0px 0px 3px ${color}, 0px 0px 2px #fff`,
-              // color: `${color}`,
-            }
-          : undefined
-      }
-    />
-  );
-};
+//};
 //
