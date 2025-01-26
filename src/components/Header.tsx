@@ -1,5 +1,6 @@
-import { cn } from "@/lib/utils";
 import { FC, ReactNode } from "react";
+
+import { cn } from "@/lib/utils";
 
 export const Header: FC<{ children: ReactNode; className?: string }> = (
   props,

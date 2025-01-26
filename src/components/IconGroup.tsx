@@ -1,9 +1,9 @@
-import { ComponentWrapper } from "@/lib/types";
-import { cn } from "@/lib/utils";
-import { Github, Linkedin, Mail, FileText } from "lucide-react";
-
+import { FileText, Github, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
 import { FC } from "react";
+
+import { ComponentWrapper } from "@/lib/types";
+import { cn } from "@/lib/utils";
 
 const SIZE_MAP = {
   sm: 20,

@@ -1,12 +1,11 @@
 "use client";
 
-import { CardComponent } from "@/components/CardComponent";
+import { ChevronRight } from "lucide-react";
+import { FC, ReactNode } from "react";
+
 import { Header } from "@/components/Header";
 import { IconGroup } from "@/components/IconGroup";
 import { LoadOutLink } from "@/components/LoadOutLink";
-import { ChevronRight } from "lucide-react";
-
-import { FC, ReactNode } from "react";
 
 export default function Home() {
   return (

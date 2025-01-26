@@ -1,6 +1,7 @@
 "use client";
 
 import { FC, ReactNode, useEffect, useRef } from "react";
+
 import { usePathInfo } from "../hooks/usePathInfo";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 import { applyClassToList, getFadeInElements } from "../utils";

@@ -1,6 +1,7 @@
 "use client";
-import { FCWithChildren } from "@/lib/types";
 import { ReactNode, useEffect, useState } from "react";
+
+import { FCWithChildren } from "@/lib/types";
 
 type PropsType = {
   delay?: number;

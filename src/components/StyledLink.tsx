@@ -1,6 +1,7 @@
 import { ComponentWrapper } from "@/lib/types";
-import { LoadOutLink } from "./LoadOutLink";
 import { cn } from "@/lib/utils";
+
+import { LoadOutLink } from "./LoadOutLink";
 
 type PropsType = {
   currentPage: boolean;

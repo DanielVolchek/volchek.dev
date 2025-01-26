@@ -1,9 +1,10 @@
 "use client";
 
+import { useEffect, useMemo, useRef, useState } from "react";
+
+import { isElementFullyInViewport } from "@/lib/hooks/useElementInViewport";
 import { BasePathTemplate, pages, usePathInfo } from "@/lib/hooks/usePathInfo";
 
-import { useEffect, useMemo, useRef, useState } from "react";
-import { isElementFullyInViewport } from "@/lib/hooks/useElementInViewport";
 import { NavLink } from "./StyledLink";
 
 // This is an experiment in building a dynamic nav, which can have any number of elements added to it

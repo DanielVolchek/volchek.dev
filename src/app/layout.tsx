@@ -1,8 +1,10 @@
-import type { Metadata } from "next";
 import "../css/globals.css";
+
+import type { Metadata } from "next";
+import { Suspense } from "react";
+
 import { Navbar } from "@/components/navbar";
 import { PageUpdateContext } from "@/lib/context/PageUpdateContext";
-import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Volchek.Dev",

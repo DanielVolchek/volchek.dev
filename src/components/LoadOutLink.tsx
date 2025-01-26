@@ -1,13 +1,12 @@
 "use client";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { MouseEventHandler } from "react";
 
-import Link from "next/link";
-
-import { ComponentWrapper } from "@/lib/types";
-import { useReducedMotion } from "@/lib/hooks/useReducedMotion";
 import { getBasePath, usePathInfo } from "@/lib/hooks/usePathInfo";
-import { applyClassToList, getFadeInElements, delay } from "@/lib/utils";
-import { useRouter } from "next/navigation";
+import { useReducedMotion } from "@/lib/hooks/useReducedMotion";
+import { ComponentWrapper } from "@/lib/types";
+import { applyClassToList, delay, getFadeInElements } from "@/lib/utils";
 
 type LoadOutProps = {
   animationDisabled?: boolean;
