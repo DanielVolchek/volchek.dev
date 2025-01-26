@@ -6,12 +6,9 @@ import { ComponentWrapper } from "@/lib/types";
 
 import { LoadOutLink } from "./LoadOutLink";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useBreakpoints } from "@/lib/hooks/useBreakpoint";
 import { isElementFullyInViewport } from "@/lib/hooks/useElementInViewport";
 
 export const Nav = () => {
-  const breakpoints = useBreakpoints();
-
   const pathInfo = usePathInfo();
   const [optimisticCurrentPage, setOptimisticCurrentPage] = useState(
     pathInfo.basePath,
