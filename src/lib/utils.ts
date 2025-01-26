@@ -5,7 +5,7 @@ export const cn = (...inputs: ClassValue[]) => {
   return twMerge(clsx(inputs));
 };
 
-export const waitInputMS = async (number = 125) => {
+export const delay = async (number = 125) => {
   return new Promise<void>((resolve) => {
     setTimeout(() => {
       resolve();
@@ -35,7 +35,7 @@ export const applyClassToList = async (options: {
 
     console.log("waiting ", waitMS);
 
-    await waitInputMS(waitMS);
+    await delay(waitMS);
   };
 
   for (const child of group) {
@@ -64,3 +64,6 @@ export const debounce = <T extends (...args: any) => any>(
     timeoutId = setTimeout(() => fn(...args), wait);
   };
 };
+
+export const getFadeInElements = () =>
+  Array.from(document.querySelectorAll(".fade-in-element"));
