@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { Header } from "@/components/Header";
 
 export default function Work() {
   useEffect(() => {
@@ -9,9 +10,13 @@ export default function Work() {
 
   return (
     <main>
-      <h1 className="fade-in-element">work page 1</h1>
-      <h1 className="fade-in-element">work page 2</h1>
-      <h1 className="fade-in-element">work page 3</h1>
+      <Header className="fade-in-element">Work Experience</Header>
+      <p className="fade-in-element">fade in 1</p>
+      <p className="fade-in-element">fade in 1</p>
+      <p className="fade-in-element">fade in 1</p>
+      <p className="fade-in-element">fade in 1</p>
+      <p className="fade-in-element">fade in 1</p>
+      <p className="fade-in-element">fade in 1</p>
     </main>
   );
 }

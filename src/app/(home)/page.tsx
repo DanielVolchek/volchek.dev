@@ -1,18 +1,7 @@
-// TODO
-// Move waitInputMS and applyClassToList and LoadOutLink to seperate files
-// Add custom property transitionOnEntry to elements you want to be transitioned out (or just use class fade-in-element)
-// Switch from grabbing elements from ref to grabbing elements by that with document selector
-// Add load in code to layout
-//
-// Set main page color by setting a css var on each page when loading it
-// Then get color when needed with var or using inherit
-//
-// BUG
-// The first load of a page doesn't apply the transition effects
-
 "use client";
 
 import { CardComponent } from "@/components/CardComponent";
+import { Header } from "@/components/Header";
 import { IconGroup } from "@/components/IconGroup";
 import { LoadOutLink } from "@/components/LoadOutLink";
 import { ChevronRight } from "lucide-react";
@@ -25,12 +14,7 @@ export default function Home() {
       <Group
         header={"Daniel Volchek"}
         subheader={"Front-End Developer. Minimalist. Dreamer"}
-        content={
-          <p>
-            I am a Front-End developer, specialized in building scalable React
-            Web-apps.
-          </p>
-        }
+        content={undefined}
       />
 
       <Group
@@ -38,11 +22,7 @@ export default function Home() {
         subheader={
           <LoadOutLink href="/work">See where I&apos;ve worked</LoadOutLink>
         }
-        content={
-          <div>
-            <CardComponent>this is some text in a card component</CardComponent>
-          </div>
-        }
+        content={undefined}
       />
       <Group
         header={"Projects"}
@@ -87,18 +67,12 @@ const Group: FC<GroupProps> = (props) => {
   );
 };
 
-const Header: FC<{ children: ReactNode }> = (props) => {
-  const { children } = props;
-
-  return <h2 className="text-2xl md:text-4xl">{children}</h2>;
-};
-
 const Subheader: FC<{ children: ReactNode }> = (props) => {
   const { children } = props;
 
   return (
-    <p className="font-mono text-lg text-gray-400 transition-transform duration-75 hover:-translate-y-1 hover:underline md:text-xl">
-      <span className="">
+    <p className="group">
+      <span className="font-mono text-lg text-gray-400 transition-transform duration-75 group-hover:-translate-y-1 group-hover:underline md:text-xl">
         {children}
         <ChevronRight className="inline" />
       </span>

@@ -1,3 +1,9 @@
+import { DebounceComponent } from "@/components/DebounceComponent";
+
 export default function Loading() {
-  return <p>loading...</p>;
+  return (
+    <DebounceComponent>
+      <p>Loading...</p>
+    </DebounceComponent>
+  );
 }

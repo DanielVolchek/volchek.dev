@@ -18,10 +18,8 @@ export default function RootLayout({
     <html lang="en">
       <body className="mx-auto w-[95%]">
         <Suspense>
-          <PageUpdateContext>
-            <Navbar />
-            {children}
-          </PageUpdateContext>
+          <Navbar />
+          <PageUpdateContext>{children}</PageUpdateContext>
         </Suspense>
       </body>
     </html>
