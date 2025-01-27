@@ -25,7 +25,7 @@ export const applyClassToList = async (options: {
     className,
     remove = false,
     wait = false,
-    waitMS = 25,
+    waitMS = 75,
   } = options;
 
   const waitWrapper = async () => {

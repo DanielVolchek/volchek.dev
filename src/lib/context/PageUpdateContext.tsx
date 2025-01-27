@@ -4,13 +4,27 @@ import { FC, ReactNode, useEffect, useRef } from "react";
 
 import { usePathInfo } from "../hooks/usePathInfo";
 import { useReducedMotion } from "../hooks/useReducedMotion";
-import { applyClassToList, getFadeInElements } from "../utils";
+import { applyClassToList, delay, getFadeInElements } from "../utils";
 
 const usePageUpdate = () => {
   const path = usePathInfo();
   const prefersReducedMotion = useReducedMotion();
 
   const pageObserverRef = useRef<MutationObserver | null>(null);
+
+  const applyVisibilityClass = () => {
+    const elements = getFadeInElements();
+    const elementsFound = elements.length > 0;
+    if (elementsFound) {
+      applyClassToList({
+        group: elements,
+        className: "visible",
+        wait: true,
+      });
+    }
+
+    return elementsFound;
+  };
 
   const transitionIn = async () => {
     console.log("transitioning in");
@@ -19,18 +33,7 @@ const usePageUpdate = () => {
       return;
     }
 
-    const applyVisibilityClass = () => {
-      const elements = getFadeInElements();
-      if (elements.length > 0) {
-        applyClassToList({
-          group: elements,
-          className: "visible",
-          wait: true,
-        });
-        return true;
-      }
-      return false;
-    };
+    await delay(200);
 
     // Try to apply the class immediately
     if (applyVisibilityClass()) {
@@ -40,9 +43,9 @@ const usePageUpdate = () => {
     // If elements are not available, observe changes in the DOM
     pageObserverRef.current = new MutationObserver((_, observer) => {
       console.log("mutation occurred");
-      // We only want to observe once, if the document has no fade in elements after first mutation it won't have any at all
-      applyVisibilityClass();
-      observer.disconnect();
+      if (applyVisibilityClass()) {
+        observer.disconnect();
+      }
     });
 
     // Start observing the document for changes
@@ -55,7 +58,9 @@ const usePageUpdate = () => {
   useEffect(() => {
     transitionIn();
 
-    return () => pageObserverRef.current?.disconnect();
+    return () => {
+      pageObserverRef.current?.disconnect();
+    };
   }, [path.fullPath]);
 };
 

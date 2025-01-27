@@ -34,7 +34,7 @@ export const Nav = () => {
         <NavLink
           currentPage={optimisticCurrentPage === href}
           onClick={() => onClick(href as BasePathTemplate)}
-          key={i}
+          key={href}
           href={href}
           color={page.color}
           ref={(el) => {
