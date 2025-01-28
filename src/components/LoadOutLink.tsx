@@ -6,7 +6,12 @@ import { MouseEventHandler } from "react";
 import { getBasePath, usePathInfo } from "@/lib/hooks/usePathInfo";
 import { useReducedMotion } from "@/lib/hooks/useReducedMotion";
 import { ComponentWrapper } from "@/lib/types";
-import { applyClassToList, delay, getFadeInElements } from "@/lib/utils";
+import {
+  applyClassToList,
+  delay,
+  getFadeInElements,
+  getWaitTime,
+} from "@/lib/utils";
 
 type LoadOutProps = {
   animationDisabled?: boolean;
@@ -35,7 +40,7 @@ const useTransitionHook = () => {
       group: childrenReversed,
       className: "visible",
       remove: true,
-      wait: true,
+      wait: getWaitTime(childrenReversed.length),
     });
     await delay(25);
   };

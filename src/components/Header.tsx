@@ -1,4 +1,4 @@
-import { FC, ReactNode } from "react";
+import { ElementType, FC, ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
 

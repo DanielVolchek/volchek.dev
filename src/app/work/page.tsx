@@ -1,13 +1,13 @@
 "use client";
 
-import { Header } from "@/components/Header";
+import { MainLayoutComponent } from "@/components/MainLayoutComponent";
 import { WorkExperienceGroup } from "@/components/WorkSection";
 
 export default function Work() {
   return (
-    <main>
-      <Header className="fade-in-element">Work Experience</Header>
+    <MainLayoutComponent>
+      <h1 className="fade-in-element text-4xl">Work Experience</h1>
       <WorkExperienceGroup />
-    </main>
+    </MainLayoutComponent>
   );
 }

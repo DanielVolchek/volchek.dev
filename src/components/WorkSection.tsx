@@ -3,6 +3,8 @@ import { FC, useMemo } from "react";
 import { ComponentWrapper } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
+import { Group } from "./Group";
+
 type Companies = "Clover" | "Heartbeat" | "Hunter_College" | "Freelance";
 
 type SubCategory = string;
@@ -20,7 +22,7 @@ type PropsType = {
   work: WorkType;
 };
 
-export const WorkMap: Record<Companies, WorkType> = {
+const WorkMap: Record<Companies, WorkType> = {
   Freelance: {
     title: "Freelance web developer",
     companyName: "Self-Employed",
@@ -68,27 +70,38 @@ export const WorkMap: Record<Companies, WorkType> = {
 } as const;
 
 export const WorkExperienceGroup: FC = () => {
-  const WorkElements = useMemo(() => {
-    return Object.entries(WorkMap).map(([key, value]) => (
-      <WorkSection key={key} work={value} className="mb-8" />
-    ));
-  }, []);
-
-  return <>{WorkElements}</>;
+  return (
+    <>
+      {Object.entries(WorkMap).map(([key, value]) => (
+        <WorkSection key={key} work={value} className="mb-8" />
+      ))}
+    </>
+  );
 };
 
-const WorkSection: ComponentWrapper<"div", PropsType> = (props) => {
+const WorkSection: ComponentWrapper<"li", PropsType> = (props) => {
   const { work, className, ...rest } = props;
 
+  // <li className={cn(className, "fade-in-element")} {...rest}>
+  //   <div className="fade-in-element">
+  //     <h2 className="">{work.title}</h2>
+  //     <h3>{work.companyName}</h3>
+  //     <p>{work.dateString}</p>
+  //   </div>
+  //   <WorkDescription bulletPoints={work.bulletPoints} />
+  // </li>
+
   return (
-    <section className={cn(className, "fade-in-element")} {...rest}>
-      <div className="fade-in-element">
-        <h2>{work.title}</h2>
-        <h3>{work.companyName}</h3>
-        <p>{work.dateString}</p>
-      </div>
-      <WorkDescription bulletPoints={work.bulletPoints} />
-    </section>
+    <Group
+      header={work.companyName}
+      subheader={work.title}
+      content={
+        <>
+          <p>{work.dateString}</p>
+          <WorkDescription bulletPoints={work.bulletPoints} />
+        </>
+      }
+    />
   );
 };
 
@@ -100,7 +113,7 @@ const BulletPointUl: ComponentWrapper<"ul"> = (props) => {
   const { className, ...rest } = props;
 
   return (
-    <ul className={cn("fade-in-element list-disc", className)} {...rest} />
+    <ul className={cn("fade-in-element list-disc pl-8", className)} {...rest} />
   );
 };
 
@@ -108,7 +121,9 @@ const WorkDescription: FC<WorkDescriptionProps> = ({ bulletPoints }) => {
   const renderSimpleList = (points: string[]) => (
     <BulletPointUl>
       {points.map((point) => (
-        <li key={point}>{point}</li>
+        <li className="fade-in-element" key={point}>
+          {point}
+        </li>
       ))}
     </BulletPointUl>
   );

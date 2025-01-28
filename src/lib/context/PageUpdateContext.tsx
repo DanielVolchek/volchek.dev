@@ -4,7 +4,12 @@ import { FC, ReactNode, useEffect, useRef } from "react";
 
 import { usePathInfo } from "../hooks/usePathInfo";
 import { useReducedMotion } from "../hooks/useReducedMotion";
-import { applyClassToList, delay, getFadeInElements } from "../utils";
+import {
+  applyClassToList,
+  delay,
+  getFadeInElements,
+  getWaitTime,
+} from "../utils";
 
 const usePageUpdate = () => {
   const path = usePathInfo();
@@ -19,7 +24,7 @@ const usePageUpdate = () => {
       applyClassToList({
         group: elements,
         className: "visible",
-        wait: true,
+        wait: getWaitTime(elements.length),
       });
     }
 

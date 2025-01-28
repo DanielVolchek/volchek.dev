@@ -13,29 +13,26 @@ export const delay = async (number = 125) => {
   });
 };
 
+export const getWaitTime = (
+  listLength: number,
+  maxTime = 500,
+  defaultWaitTime = 75,
+) => Math.floor(Math.min(defaultWaitTime, maxTime / listLength));
+
 export const applyClassToList = async (options: {
   group: Element[];
   className: string;
   remove?: boolean;
-  wait?: boolean;
-  waitMS?: number;
+  wait?: number;
 }) => {
-  const {
-    group,
-    className,
-    remove = false,
-    wait = false,
-    waitMS = 75,
-  } = options;
+  const { group, className, wait, remove = false } = options;
 
   const waitWrapper = async () => {
     if (!wait) {
       return;
     }
 
-    console.log("waiting ", waitMS);
-
-    await delay(waitMS);
+    await delay(wait);
   };
 
   for (const child of group) {
