@@ -1,4 +1,4 @@
-import { FC, useMemo } from "react";
+import { FC } from "react";
 
 import { ComponentWrapper } from "@/lib/types";
 import { cn } from "@/lib/utils";
@@ -80,7 +80,7 @@ export const WorkExperienceGroup: FC = () => {
 };
 
 const WorkSection: ComponentWrapper<"li", PropsType> = (props) => {
-  const { work, className, ...rest } = props;
+  const { work } = props;
 
   // <li className={cn(className, "fade-in-element")} {...rest}>
   //   <div className="fade-in-element">

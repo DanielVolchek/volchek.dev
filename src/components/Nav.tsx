@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 
 import { isElementFullyInViewport } from "@/lib/hooks/useElementInViewport";
-import { BasePathTemplate, pages, usePathInfo } from "@/lib/hooks/usePathInfo";
+import { pages, usePathInfo } from "@/lib/hooks/usePathInfo";
 
 import { NavLink } from "./StyledLink";
 
@@ -20,9 +20,9 @@ export const Nav = () => {
     setOptimisticCurrentPage(pathInfo.basePath);
   }, [pathInfo.basePath]);
 
-  const onClick = (basePath: BasePathTemplate) => {
-    setOptimisticCurrentPage(basePath);
-  };
+  // const onClick = (basePath: BasePathTemplate) => {
+  //   setOptimisticCurrentPage(basePath);
+  // };
 
   const navEntryElementRefs = useRef<(HTMLAnchorElement | null)[]>([]);
 
