@@ -35,14 +35,17 @@ const useTransitionHook = () => {
   };
 
   const transitionOut = async () => {
-    const childrenReversed = getFadeInElements().reverse();
-    await applyClassToList({
-      group: childrenReversed,
-      className: "visible",
-      remove: true,
-      wait: getWaitTime(childrenReversed.length),
-    });
-    await delay(25);
+    // TODO decide if this is needed/another transition out effect or nothing
+    // document.querySelector("main")?.classList.add("opacity-0");
+    // const elements = getFadeInElements().reverse();
+    // TODO fade out full main
+    // await applyClassToList({
+    //   group: elements,
+    //   className: "visible",
+    //   remove: true,
+    //   wait: getWaitTime(elements?.length),
+    // });
+    // await delay(25);
   };
 
   return navigateWithTransition;

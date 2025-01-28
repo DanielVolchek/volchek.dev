@@ -19,12 +19,12 @@ export const getWaitTime = (
   defaultWaitTime = 75,
 ) => Math.floor(Math.min(defaultWaitTime, maxTime / listLength));
 
-export const applyClassToList = (options: {
+export const applyClassToList = async (options: {
   group: Element[];
   className: string;
   remove?: boolean;
   wait?: number;
-}) => {
+}): Promise<void> => {
   const { group, className, wait, remove = false } = options;
 
   const waitWrapper = async () => {
@@ -35,22 +35,33 @@ export const applyClassToList = (options: {
     await delay(wait);
   };
 
-  const applyClass = async (index = 0) => {
-    if (index >= group.length) return;
+  return new Promise(async (resolve) => {
+    let index = 0;
 
-    const child = group[index];
+    const applyClass = async () => {
+      if (index >= group.length) {
+        resolve(); // Resolve the promise when all elements are processed
+        return;
+      }
 
-    if (remove) {
-      child.classList.remove(className);
-    } else {
-      child.classList.add(className);
-    }
+      const child = group[index];
 
-    await waitWrapper();
-    requestAnimationFrame(() => applyClass(index + 1));
-  };
+      if (remove) {
+        child.classList.remove(className);
+      } else {
+        child.classList.add(className);
+      }
 
-  requestAnimationFrame(() => applyClass());
+      index++;
+      await waitWrapper();
+
+      // Schedule the next frame after the wait
+      requestAnimationFrame(applyClass);
+    };
+
+    // Start the sequence
+    requestAnimationFrame(applyClass);
+  });
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

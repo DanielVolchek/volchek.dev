@@ -2,6 +2,7 @@
 
 import { FC, ReactNode, useEffect, useRef } from "react";
 
+import { isElementFullyInViewport } from "../hooks/useElementInViewport";
 import { usePathInfo } from "../hooks/usePathInfo";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 import {
@@ -19,12 +20,21 @@ const usePageUpdate = () => {
 
   const applyVisibilityClass = () => {
     const elements = getFadeInElements();
+
+    const elementsInViewportLength = elements.filter(
+      isElementFullyInViewport,
+    ).length;
+
+    console.log(elements);
     const elementsFound = elements.length > 0;
     if (elementsFound) {
       applyClassToList({
         group: elements,
         className: "visible",
-        wait: getWaitTime(elements.length),
+        wait: Math.min(
+          getWaitTime(elementsInViewportLength),
+          getWaitTime(elements.length),
+        ),
       });
     }
 
@@ -38,7 +48,7 @@ const usePageUpdate = () => {
       return;
     }
 
-    await delay(200);
+    // await delay(200);
 
     // Try to apply the class immediately
     if (applyVisibilityClass()) {
@@ -47,7 +57,6 @@ const usePageUpdate = () => {
 
     // If elements are not available, observe changes in the DOM
     pageObserverRef.current = new MutationObserver((_, observer) => {
-      console.log("mutation occurred");
       if (applyVisibilityClass()) {
         observer.disconnect();
       }
