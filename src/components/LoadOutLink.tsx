@@ -6,12 +6,6 @@ import { MouseEventHandler } from "react";
 import { getBasePath, usePathInfo } from "@/lib/hooks/usePathInfo";
 import { useReducedMotion } from "@/lib/hooks/useReducedMotion";
 import { ComponentWrapper } from "@/lib/types";
-import {
-  applyClassToList,
-  delay,
-  getFadeInElements,
-  getWaitTime,
-} from "@/lib/utils";
 
 type LoadOutProps = {
   animationDisabled?: boolean;

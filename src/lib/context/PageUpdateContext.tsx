@@ -5,12 +5,7 @@ import { FC, ReactNode, useEffect, useRef } from "react";
 import { isElementFullyInViewport } from "../hooks/useElementInViewport";
 import { usePathInfo } from "../hooks/usePathInfo";
 import { useReducedMotion } from "../hooks/useReducedMotion";
-import {
-  applyClassToList,
-  delay,
-  getFadeInElements,
-  getWaitTime,
-} from "../utils";
+import { applyClassToList, getFadeInElements, getWaitTime } from "../utils";
 
 const usePageUpdate = () => {
   const path = usePathInfo();
