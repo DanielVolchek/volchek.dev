@@ -33,7 +33,7 @@ export const Nav = () => {
       return (
         <NavLink
           currentPage={optimisticCurrentPage === href}
-          onClick={() => onClick(href as BasePathTemplate)}
+          // onClick={() => onClick(href as BasePathTemplate)}
           key={href}
           href={href}
           color={page.color}

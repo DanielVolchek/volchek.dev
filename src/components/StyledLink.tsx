@@ -30,7 +30,7 @@ export const StyledLink: ComponentWrapper<typeof LoadOutLink> = (props) => {
     <LoadOutLink
       {...rest}
       className={cn(
-        "px-2 py-1 text-base text-gray-400 transition-all duration-300",
+        "px-2 py-1 text-base text-gray-400 transition-all duration-300 active:text-red-500",
         className,
       )}
     />
