@@ -1,5 +1,6 @@
 import "../css/globals.css";
 
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 
@@ -23,6 +24,7 @@ export default function RootLayout({
           <Navbar />
           <PageUpdateContext>{children}</PageUpdateContext>
         </Suspense>
+        <Analytics />
       </body>
     </html>
   );
