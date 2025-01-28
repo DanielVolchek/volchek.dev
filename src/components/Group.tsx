@@ -1,5 +1,5 @@
 import { ChevronRight } from "lucide-react";
-import { FC, ReactNode } from "react";
+import { FC, ReactNode, useRef } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -27,11 +27,24 @@ export const Group: FC<GroupProps> = (props) => {
 const Subheader: FC<{ children: ReactNode }> = (props) => {
   const { children } = props;
 
+  const ref = useRef<HTMLSpanElement>(null);
+
+  const onClick = () => {
+    ref.current?.classList.add("text-red-500");
+    setTimeout(() => {
+      ref.current?.classList.remove("text-red-500");
+    }, 500);
+  };
+
   return (
     <p className="group">
-      <span className="font-mono text-lg text-gray-400 transition-transform duration-75 hover:text-red-500 group-hover:-translate-y-1 group-hover:underline">
+      <span
+        onClick={onClick}
+        ref={ref}
+        className="text-base text-gray-400 transition-all duration-300 hover:text-lg"
+      >
         {children}
-        <ChevronRight className="inline" />
+        <ChevronRight className="inline" size={20} />
       </span>
     </p>
   );
