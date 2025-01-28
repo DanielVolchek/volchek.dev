@@ -19,7 +19,7 @@ export const getWaitTime = (
   defaultWaitTime = 75,
 ) => Math.floor(Math.min(defaultWaitTime, maxTime / listLength));
 
-export const applyClassToList = async (options: {
+export const applyClassToList = (options: {
   group: Element[];
   className: string;
   remove?: boolean;
@@ -35,15 +35,22 @@ export const applyClassToList = async (options: {
     await delay(wait);
   };
 
-  for (const child of group) {
+  const applyClass = async (index = 0) => {
+    if (index >= group.length) return;
+
+    const child = group[index];
+
     if (remove) {
-      await waitWrapper();
       child.classList.remove(className);
     } else {
-      await waitWrapper();
       child.classList.add(className);
     }
-  }
+
+    await waitWrapper();
+    requestAnimationFrame(() => applyClass(index + 1));
+  };
+
+  requestAnimationFrame(() => applyClass());
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
