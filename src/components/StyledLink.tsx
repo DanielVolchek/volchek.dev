@@ -15,10 +15,7 @@ export const NavLink: ComponentWrapper<typeof StyledLink, PropsType> = (
   return (
     <StyledLink
       {...rest}
-      className={cn(
-        className,
-        currentPage ? "!text-lg text-red-500" : "hover:text-lg",
-      )}
+      className={cn(className, currentPage ? "text-red-500" : "hover:!text-lg")}
     />
   );
 };

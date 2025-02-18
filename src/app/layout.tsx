@@ -2,13 +2,12 @@ import "../css/globals.css";
 
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
-import { Suspense } from "react";
 
+import { AnimationTrigger } from "@/components/AnimationTrigger";
 import { Navbar } from "@/components/navbar";
-import { PageUpdateContext } from "@/lib/context/PageUpdateContext";
 
 export const metadata: Metadata = {
-  title: "Volchek.Dev",
+  title: "Daniel Volchek | Portfolio",
   description: "Daniel Volchek - Portfolio",
 };
 
@@ -20,10 +19,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="mx-auto w-[95%]">
-        <Suspense>
-          <Navbar />
-          <PageUpdateContext>{children}</PageUpdateContext>
-        </Suspense>
+        <noscript>
+          <style>{`
+          .fade-in-element {
+            opacity: 1 !important;
+            transform: none !important;
+            transition: none !important;
+          }
+        `}</style>
+        </noscript>
+        <Navbar />
+        {children}
+        <AnimationTrigger />
         <Analytics />
       </body>
     </html>

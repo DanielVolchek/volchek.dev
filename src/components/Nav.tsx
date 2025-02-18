@@ -40,20 +40,13 @@ export const Nav = () => {
           ref={(el) => {
             navEntryElementRefs.current[i] = el;
           }}
+          className={i === 0 ? "pl-0" : ""}
         >
           {page.title}
         </NavLink>
       );
     });
   }, [optimisticCurrentPage]);
-
-  useEffect(() => {
-    console.log(navEntryElementRefs.current);
-
-    for (const el of navEntryElementRefs.current) {
-      console.log(isElementFullyInViewport(el!));
-    }
-  }, [navEntryElements]);
 
   return (
     <nav className="flex flex-col gap-2">

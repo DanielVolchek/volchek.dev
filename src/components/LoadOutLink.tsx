@@ -3,7 +3,6 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { MouseEventHandler } from "react";
 
-import { getBasePath, usePathInfo } from "@/lib/hooks/usePathInfo";
 import { useReducedMotion } from "@/lib/hooks/useReducedMotion";
 import { ComponentWrapper } from "@/lib/types";
 
@@ -12,15 +11,9 @@ type LoadOutProps = {
 };
 
 const useTransitionHook = () => {
-  const path = usePathInfo();
-
   const router = useRouter();
 
   const navigateWithTransition = async (href: string) => {
-    if (getBasePath(href) === path.basePath) {
-      return;
-    }
-
     try {
       await transitionOut();
     } finally {
@@ -45,6 +38,7 @@ const useTransitionHook = () => {
   return navigateWithTransition;
 };
 
+// TODO LoadOutLink can probably be replaced since there is no transition out effect anymore
 export const LoadOutLink: ComponentWrapper<typeof Link, LoadOutProps> = (
   props,
 ) => {

@@ -16,8 +16,14 @@ export const delay = async (number = 125) => {
 export const getWaitTime = (
   listLength: number,
   maxTime = 500,
-  defaultWaitTime = 75,
-) => Math.floor(Math.min(defaultWaitTime, maxTime / listLength));
+  inputtedWaitTime = 75,
+) => {
+  const minBetweenInputAndMax = Math.min(
+    inputtedWaitTime,
+    maxTime / listLength,
+  );
+  return Math.floor(minBetweenInputAndMax);
+};
 
 export const applyClassToList = async (options: {
   group: Element[];

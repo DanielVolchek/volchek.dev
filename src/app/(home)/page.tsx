@@ -1,8 +1,5 @@
-"use client";
-
 import { Group } from "@/components/Group";
-import { IconGroup } from "@/components/IconGroup";
-import { LoadOutLink } from "@/components/LoadOutLink";
+import { LinkWithArrow } from "@/components/LinkWithArrow";
 import { MainLayoutComponent } from "@/components/MainLayoutComponent";
 
 export default function Home() {
@@ -12,36 +9,35 @@ export default function Home() {
 
       <Group
         header={"Daniel Volchek"}
-        subheader={"Front-End Developer. Minimalist. Dreamer"}
-        content={undefined}
+        subheader={
+          <LinkWithArrow href="/about">
+            Front-End Developer. Minimalist. Dreamer
+          </LinkWithArrow>
+        }
       />
 
       <Group
         header={"Work Experience"}
         subheader={
-          <LoadOutLink href="/work">See where I&apos;ve worked</LoadOutLink>
+          <LinkWithArrow href="/work">See where I&apos;ve worked</LinkWithArrow>
         }
-        content={undefined}
       />
       <Group
         header={"Projects"}
         subheader={
-          <LoadOutLink href="/projects">Check out my projects</LoadOutLink>
+          <LinkWithArrow href="/projects">Check out my projects</LinkWithArrow>
         }
-        content={undefined}
       />
       <Group
         header={"Blog Posts"}
-        subheader={"Read my thoughts"}
-        content={undefined}
+        subheader={<LinkWithArrow href="/blog">Read my thoughts</LinkWithArrow>}
       />
       <Group
         header={"Contact Me"}
-        subheader={"Let's work together"}
-        content={
-          <>
-            <IconGroup size="md" />
-          </>
+        subheader={
+          <LinkWithArrow href="/contact">
+            Let&apos;s work together
+          </LinkWithArrow>
         }
       />
     </MainLayoutComponent>

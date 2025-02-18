@@ -82,22 +82,13 @@ export const WorkExperienceGroup: FC = () => {
 const WorkSection: ComponentWrapper<"li", PropsType> = (props) => {
   const { work } = props;
 
-  // <li className={cn(className, "fade-in-element")} {...rest}>
-  //   <div className="fade-in-element">
-  //     <h2 className="">{work.title}</h2>
-  //     <h3>{work.companyName}</h3>
-  //     <p>{work.dateString}</p>
-  //   </div>
-  //   <WorkDescription bulletPoints={work.bulletPoints} />
-  // </li>
-
   return (
     <Group
-      header={work.companyName}
-      subheader={work.title}
+      header={work.title}
+      subheader={work.companyName}
       content={
         <>
-          <p>{work.dateString}</p>
+          <p className="text-base text-gray-400">{work.dateString}</p>
           <WorkDescription bulletPoints={work.bulletPoints} />
         </>
       }
@@ -117,8 +108,13 @@ const BulletPointUl: ComponentWrapper<"ul"> = (props) => {
   );
 };
 
-const WorkDescription: FC<WorkDescriptionProps> = ({ bulletPoints }) => {
-  const renderSimpleList = (points: string[]) => (
+type SimpleListProps = {
+  points: string[];
+};
+const SimpleList: FC<SimpleListProps> = (props) => {
+  const { points } = props;
+
+  return (
     <BulletPointUl>
       {points.map((point) => (
         <li className="fade-in-element" key={point}>
@@ -127,21 +123,32 @@ const WorkDescription: FC<WorkDescriptionProps> = ({ bulletPoints }) => {
       ))}
     </BulletPointUl>
   );
+};
 
-  const renderCategorizedList = (
-    categorizedPoints: Record<string, string[]>,
-  ) => (
+type CategorizedListProps = {
+  categorizedPoints: Record<string, string[]>;
+};
+const CategorizedList: FC<CategorizedListProps> = (props) => {
+  const { categorizedPoints } = props;
+
+  return (
     <div>
       {Object.entries(categorizedPoints).map(([category, points]) => (
         <section key={category} className="fade-in-element">
           <h3 className="fade-in-element">{category}</h3>
-          {renderSimpleList(points)}
+          {<SimpleList points={points} />}
         </section>
       ))}
     </div>
   );
+};
 
-  return Array.isArray(bulletPoints)
-    ? renderSimpleList(bulletPoints)
-    : renderCategorizedList(bulletPoints);
+const WorkDescription: FC<WorkDescriptionProps> = (props) => {
+  const { bulletPoints } = props;
+
+  return Array.isArray(bulletPoints) ? (
+    <SimpleList points={bulletPoints} />
+  ) : (
+    <CategorizedList categorizedPoints={bulletPoints} />
+  );
 };
