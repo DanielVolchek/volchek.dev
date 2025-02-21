@@ -30,9 +30,10 @@ export default function RootLayout({
         </noscript>
         <Navbar />
         {children}
-        <AnimationTrigger />
         <Analytics />
       </body>
     </html>
   );
 }
+
+// <AnimationTrigger />

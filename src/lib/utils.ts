@@ -86,5 +86,15 @@ export const debounce = <T extends (...args: any) => any>(
   };
 };
 
+export const fadeInCountApplier = () => {
+  let elementCounter = 0;
+
+  const getNextCSSProp = () => {
+    return elementCounter++;
+  };
+
+  return { getNextCSSProp };
+};
+
 export const getFadeInElements = () =>
   Array.from(document.querySelectorAll(".fade-in-element"));

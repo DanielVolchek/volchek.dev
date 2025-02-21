@@ -26,24 +26,24 @@ body {
   color: red !important
 }
 
-@media not all and (prefers-reduced-motion: reduce) {
-  .fade-in-element {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-  }
-
-  .visible {
-      opacity: 1;
-      transform: translateY(0);
-  }
-
-  .invisible {
-    opacity: 0;
-    transition: opacity 0.25s ease-out
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-.hover-icon:hover {
-  color: var(--page-secondary-color)
+.fade-in-element {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s ease-out forwards;
+  animation-delay: calc(var(--fade-in, 0) * 100ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-element {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
 }

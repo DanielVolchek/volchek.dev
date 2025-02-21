@@ -2,7 +2,6 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 
-import { isElementFullyInViewport } from "@/lib/hooks/useElementInViewport";
 import { pages, usePathInfo } from "@/lib/hooks/usePathInfo";
 
 import { NavLink } from "./StyledLink";

@@ -9,13 +9,18 @@ type GroupProps = {
   subheader: ReactNode;
   content?: ReactNode;
   fadeIn?: boolean;
+  increment: number;
 };
 
 export const Group: FC<GroupProps> = (props) => {
-  const { header, subheader, content, fadeIn = true } = props;
+  const { header, subheader, content, fadeIn = true, increment } = props;
 
   return (
-    <div className={cn({ "fade-in-element": fadeIn })}>
+    <div
+      fade-in-element={increment}
+      className={cn({ "fade-in-element": fadeIn })}
+      style={{ "--fade-in": increment } as React.CSSProperties}
+    >
       <Header>{header}</Header>
       <Subheader>{subheader}</Subheader>
       <div className="text-gray-300">{content}</div>

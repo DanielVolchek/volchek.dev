@@ -1,11 +1,21 @@
 import { Group } from "@/components/Group";
 import { LinkWithArrow } from "@/components/LinkWithArrow";
 import { MainLayoutComponent } from "@/components/MainLayoutComponent";
+import { fadeInCountApplier } from "@/lib/utils";
 
 export default function Home() {
+  const fadeInCounter = fadeInCountApplier();
+
   return (
     <MainLayoutComponent>
-      <h1 className="fade-in-element text-4xl">Home</h1>
+      <h1
+        className="fade-in-element text-4xl"
+        style={
+          { "--fade-in": fadeInCounter.getNextCSSProp() } as React.CSSProperties
+        }
+      >
+        Home
+      </h1>
 
       <Group
         header={"Daniel Volchek"}
@@ -14,6 +24,7 @@ export default function Home() {
             Front-End Developer. Minimalist. Dreamer
           </LinkWithArrow>
         }
+        increment={fadeInCounter.getNextCSSProp()}
       />
 
       <Group
@@ -21,16 +32,19 @@ export default function Home() {
         subheader={
           <LinkWithArrow href="/work">See where I&apos;ve worked</LinkWithArrow>
         }
+        increment={fadeInCounter.getNextCSSProp()}
       />
       <Group
         header={"Projects"}
         subheader={
           <LinkWithArrow href="/projects">Check out my projects</LinkWithArrow>
         }
+        increment={fadeInCounter.getNextCSSProp()}
       />
       <Group
         header={"Blog Posts"}
         subheader={<LinkWithArrow href="/blog">Read my thoughts</LinkWithArrow>}
+        increment={fadeInCounter.getNextCSSProp()}
       />
       <Group
         header={"Contact Me"}
@@ -39,6 +53,7 @@ export default function Home() {
             Let&apos;s work together
           </LinkWithArrow>
         }
+        increment={fadeInCounter.getNextCSSProp()}
       />
     </MainLayoutComponent>
   );
