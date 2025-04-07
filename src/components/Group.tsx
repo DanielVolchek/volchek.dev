@@ -32,7 +32,7 @@ const Subheader: FC<{ children: ReactNode }> = (props) => {
   const { children } = props;
 
   return (
-    <p className="inline-block text-base text-gray-400 transition-all duration-300 hover:text-lg active:text-red-500">
+    <p className="inline-block text-base text-gray-400 transition-all duration-300 hover:text-[17px] active:text-red-500">
       {children}
     </p>
   );

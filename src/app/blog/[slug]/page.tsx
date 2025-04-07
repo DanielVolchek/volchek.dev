@@ -28,7 +28,7 @@ export default async function BlogPostPage(props: PropsType) {
 
   return (
     <main
-      className="fade-in-element prose prose-invert"
+      className="fade-in-element prose prose-invert mx-auto mt-8"
       dangerouslySetInnerHTML={{ __html: innerHtml }}
     ></main>
   );
